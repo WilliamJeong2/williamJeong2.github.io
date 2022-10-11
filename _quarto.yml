@@ -1,0 +1,45 @@
+project:
+  type: website
+  output-dir: _site
+  preview: 
+      port: 3692
+      browser: true
+
+website:
+  title: "윌리엄의 기술 블로그"
+  description: "윌리엄의 기술 블로그입니다."
+  # favicon: 
+  navbar:
+    right:
+      - href: about.qmd
+        text: 홈
+      - href: index.qmd
+        text: 블로그
+      - href: research.qmd
+        text: 연구 아카이브
+      - icon: github
+        href: https://github.com/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/wjd5480/
+  cookie-consent: true
+  google-analytics: UA-150213770-1
+
+format:
+  html:
+    toc: true
+    theme: 
+      light: css/light.scss
+    css: styles.css
+    code-copy: true
+    code-overflow: wrap
+    comments:
+      giscus: 
+        repo: williamjeong2/williamjeong2.github.io
+        repo-id: R_kgDOIMJu-w
+        category: Comments
+        category-id: DIC_kwDOIMJu-84CR6zt
+        mapping: pathname
+        reactions-enabled: true
+        input-position: top
+        theme: light
+        language: ko

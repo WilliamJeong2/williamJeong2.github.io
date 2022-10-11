@@ -1,0 +1,18 @@
+---
+title: "William의 기술 블로그"
+listing:
+  contents: posts
+  fields: [image, title, description, reading-time, categories, date]
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  sort: "date desc"
+page-layout: full
+title-block-banner: false
+comments: false
+---
+
+<button type="button" class="btn btn-primary btn-lg" onclick=window.open('https://toss.me/williamj')>💵Toss로 서포트하기</button>
+<p class="text-muted">송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. </br>기부해주신 돈은 커피를 마시는데 사용됩니다.</p>

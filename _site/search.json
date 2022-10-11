@@ -1,0 +1,296 @@
+[
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "연구 아카이브",
+    "section": "",
+    "text": "Researcher (2019.09-현재)\n\n항암제 복합처방을 위한 인공지능 약물 추천시스템 (2020.11~ / EuroStars2 산업통상자원부)\n\n환자의 유전체 및 다양한 오믹스 데이터 분석 기술\n\n다중오믹스 폐암 바이오마커 패널 제작 및 인공지능 SW 개발 (2021.04~2021.10)\n\n유전체, 전사체, 후성유전체의 다중오믹스 기반 암 분석파이프라인 구축\n인공지능 폐암 진단 알고리즘 개발\n\n유방암 환자 빅데이터를 이용한 임상 약물 추천 서비스 개발 (2020.09~ 2022.09/ 중소벤처기업부)\n\n암환자 유전체 데이터(NGS) 분석 파이프라인 구축\n\n표현형과 유전형 기반의 디지털 행동 분석 및 개입 모델 서비스 (2020.09~2020.12)\n\n표현형과 유전형 기반의 질병 상관도 분석\n코호트 기반 개인별 건강 검진 데이터와 코호트 대상자의 유전체 데이터 구축\n\n암 타겟 단백질 10종 텍스트 데이터베이스 구축 (2020.07~2020.12)\n\n암질환에 특이적인 PROTAC 타겟 발굴을 위한 텍스트마이닝 수행, 단백질 사전 구축, 단백질 상호작용 추출, 신호전달 추출, pubmed, pubmed central, 미국특허 정보 추출\n\n빅데이터를 이용한 신약개발 SW 개발 (~2019.12 / 과학기술정통부)\n\n신약 탐색을 위한 유전체 NGS 분석 파이프라인 개발"
+  },
+  {
+    "objectID": "posts/2021-02-19-extract-google-account-profile-picture/index.html",
+    "href": "posts/2021-02-19-extract-google-account-profile-picture/index.html",
+    "title": "구글 프로필 사진 다운로드하기",
+    "section": "",
+    "text": "구글 프로필 사진을 다운받아야 할 경우가 가끔 있다. 한글로 검색해보니 정보가 나오지 않아서 검색 결과의 내용을 정리해 두고자 한다.\n여러개의 구글 계정을 사용중이라면 CTRL + SHIFT + N 을 눌러 private window 를 하나 만든다.\n\n프로필 사진을 다운받고자 하는 계정으로 gmail같은 구글 서비스를 로그인 한다.\nhttps://get.google.com/albumarchive 에 접속한다.\n프로필 사진 > Profile Photos 으로 이동한다. 여기에서 계정의 모든 프로필 사진들을 찾을 수 있다.\n우측 상단 구석에 있는 triple dot 버튼을 사용해서 하나의 사진을 다운받거나 모든 사진을 다운받을 수 있다.\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/deed.ko"
+  },
+  {
+    "objectID": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html",
+    "href": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html",
+    "title": "🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이",
+    "section": "",
+    "text": "Dockerfile 을 작성하다 보면 RUN, CMD, ENTRYPOINT 차이를 알아야 할 경우가 생기게 됩니다. 세 가지 명령어를 잘 모르고 사용하게 된다면 곤란한 상황을 겪게 될수도있습니다."
+  },
+  {
+    "objectID": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#tldr",
+    "href": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#tldr",
+    "title": "🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이",
+    "section": "TL;DR",
+    "text": "TL;DR\n\nRUN\n이미지 생성시 새로운 레이어를 생성하여 명령어를 실행하게 됩니다. 보통 아래와 같은 방식으로 활용하게 됩니다.\nRUN apt-get install -y curl\n# 또는 \nRUN chmod -R 777 /tmp\nCMD\ndefault 명령이나 파라미터를 설정할 수 있습니다. 우리가 도커 이미지를 사용하여 docker run 명령어로 컨테이너를 생성할 경우 생성 후에 실행될 커맨드를 입력해주지 않는다면, CMD 명령어를 사용하여 작성된 커맨드가 기본으로 실행됩니다. 또한 바로 다음에 설명할 ENTRYPOINT의 기본 파라미터를 설정할 수도 있습니다. 즉, CMD 는 컨데이터를 실행할 때 기본으로 사용되는 명령어를 설정하는 것입니다.\nENTRYPOINT\ndocker run 명령어로 컨테이너를 생성 후 실행되는 명령어입니다."
+  },
+  {
+    "objectID": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#run",
+    "href": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#run",
+    "title": "🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이",
+    "section": "RUN",
+    "text": "RUN\n보통 이미지에 새로운 패키지를 설치하거나 명령어를 실행시킬 경우 사용됩니다.\nFROM ubuntu:18.04\nRUN apt-get update\nRUN apt-get install -y python3 python3-pip wget git less neovim\nRUN pip3 install pandas\nRUN 명령은 실행할 때마다 레이어가 생성됩니다. 따라서 RUN 명령어 하나에 통합해준다면 보다 깔끔하게 레이어를 관리할 수 있습니다.\n# example\nFROM ubuntu:18.04\nRUN apt-get update \\\n    && apt-get install -y python3 python3-pip wget git less neovim \\\n    && pip3 install pandas"
+  },
+  {
+    "objectID": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#cmd",
+    "href": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#cmd",
+    "title": "🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이",
+    "section": "CMD",
+    "text": "CMD\ndocker run 명령어 실행 시 실행 될 기본 명령어를 설정하거나, 아래에 있는 ENTRYPOINT 의 기본 명령어 파라미터를 설정할 때 사용됩니다. CMD 명령어는 보통 컨테이너를 실행할 때 사용할 기본 명령어를 설정하는 것입니다.\n\nCMD [\"executable\",\"param1\",\"param2\"] (exec form, preferred)\nCMD [\"param1\",\"param2\"] (sets additional default parameters for ENTRYPOINT in exec form)\nCMD command param1 param2 (shell form)\n\nFROM ubuntu:18.04\nCMD echo \"Hello\"\n위와 같이 작성하여 만들어진 이미지를 docker run (옵션 x) 명령어 실행 시 CMD 명령어가 실행되어 “Hello” 를 출력하게 됩니다.\n하지만, 두 번째 줄에 작성한 CMD echo \"Hello\" 와 별개로 docker run -it <image_name> echo \"Hello world\" 명령어를 주게 되면, dockerfile 에서 작성한 “Hello”는 무시되고 “hello world”를 출력하게 됩니다.\nCMD는 여러 번 dockerfile에 작성할 수 있지만, 가장 마지막에 작성된 CMD 만이 실행(override)됩니다."
+  },
+  {
+    "objectID": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#entrypoint",
+    "href": "posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html#entrypoint",
+    "title": "🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이",
+    "section": "ENTRYPOINT",
+    "text": "ENTRYPOINT\ndocker run 명령어로 컨테이너를 생성 후 실행되는 명령어입니다.\n\nENTRYPOINT [“executable”, “param1”, “param2”] (exec form, preferred)\nENTRYPOINT command param1 param2 (shell form)\n\nCMD 와의 차이를 쉽게 설명하자면, ENTRYPOINT 는 docker run 뒤에 명령어 작성과 무관하게 실행되는 명령어입니다.\nFROM ubuntu:18.04\nENTRYPOINT [\"/bin/echo\", \"Hi\"]\nCMD echo \"Hello\"\n$ docker run -it <image_name>\nHi Hello\n$ docker run -it <image_name> Mother\nHi Mother\n차이를 아시겠나요?\n그렇다면, 변수를 사용하기 위해서는?\nFROM ubuntu:18.04\nENTRYPOINT echo $HOME\n$ docker run -it <image_name>\n/home"
+  },
+  {
+    "objectID": "posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html",
+    "href": "posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html",
+    "title": "우분투에 NAS 마운트",
+    "section": "",
+    "text": "우리는 NAS를 사용하면서 데스크탑에 저장할 수 없는 대용량의 자료들을 저장하고는 합니다. 보통 백업의 용도로 사용되는데, 가끔은 외장하드처럼 마운트해서 사용해야 할 때가 있죠. 그래서 여러가지 접속 방법을 사용하여 자신의 PC에 있는 드라이브 처럼 사용할 수 있습니다. 윈도우는 검색하면 많이 나오는데 우분투의 경우에는 많이 없는 것 같아서 기록을 하게 되었습니다."
+  },
+  {
+    "objectID": "posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html#환경",
+    "href": "posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html#환경",
+    "title": "우분투에 NAS 마운트",
+    "section": "환경",
+    "text": "환경\n알아야 할 정보들:\n\nNAS IP\nNAS access ID\nNAS access PW\n마운트할 nas 경로\n마운트할 local 경로"
+  },
+  {
+    "objectID": "posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html#methods",
+    "href": "posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html#methods",
+    "title": "우분투에 NAS 마운트",
+    "section": "Methods",
+    "text": "Methods\n\n1. 패키지 설치\n마운트를 하기 위한 패키지 설치 단계로 cifs-utils를 설치해주어야 합니다.\nsudo apt-get install cifs-utils\n\n\n2. 마운트 하기 위한 폴더 생성\nNAS를 현재 우분투의 경로에 마운트를 해 주어야 하는데, 그러기 위해 폴더를 생성해줍니다.\nmkdir /mnt/nas-drive\n# /mnt/nas-drive 루트 경로에 추가하기 위해서는 sudo 권한이 필요할 것이며,\n# 자신의 디렉토리에 폴더를 생성해서 마운트도 가능합니다.\n\n\n3. 네트워크 드라이브 연결 (마운트)\n아래와 같은 형식으로 입력을 해주어야 합니다. 마지막에 위치하는 vers=1.0 을 입력해주어야 저는 에러가 나지 않더라구요.\nsudo mount -t cifs //{NAS drive IP}/{NAS directory path} {local path} -o user='NAS ID',password='NAS PW',rw,vers=1.0\n예를 들어:\n\nNAS IP : 111.11.11.111\nNAS access ID : admin\nNAS access PW : admin\n마운트할 nas 경로 : /home\n마운트할 local 경로 : /mnt/nas-drive\n\n라는 환경이라면\nsudo mount -t cifs //111.11.11.111/home /mnt/nas-drive -o user='admin',password='admin',rw,vers=1.0\n가 되겠죠?\n\n\n4. 자동 마운트 등록\n4번을 진행하지 않는다면 재부팅 후에는 마운트가 끊어집니다. 계속 연결이 되어야 한다면 fstab 에 등록을 해주어서 부팅할 때마다 마운트 하도록 하면 됩니다.\nsudo vim /etc/fstab\n\n//111.11.11.111/home /mnt/nas-drive cifs user='admin',password='admin',rw,vers=1.0  0   0"
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "",
+    "text": "이 글은 Lhyam Sumal의 HOW TO SAVE APPLE TIME MACHINE BACKUPS TO CLOUD SERVICES LIKE ONEDRIVE 를 번역한 글입니다. 모든 저작권과 권리는 Sumal에게 있습니다.\nThis article is a translated version of Lhyam Sumal’s article: HOW TO SAVE APPLE TIME MACHINE BACKUPS TO CLOUD SERVICES LIKE ONEDRIVE. All rights goes back to him.\n*제가 이해한 대로 번역하였기 때문에 완벽하지 않을 수 있습니다.\n타임머신은 굉장한 기능이면서, 제 생각에는 macOS의 최고 기능입니다. 네, 윈도우에도 파일 히스토리가 있지만 타임머신만큼 포괄적인 것은 없습니다. 말 그대로 맥을 복원하고 프로그램을 다시 설치하거나 환경설정을 지정하거나 driver를 사용하지 않고도 이전에 중단한 위치를 정확하게 선택할 수 있습니다!\n그러나 백업하려면 외장하드가 연결되어야 합니다. 물론 2018년(원문이 쓰인 날)에는 클라우드 서비스에 백업할 수 있습니다. 저는 마이크로소프트 오피스 365를 구독해서 1TB의 공간을 가지고 있습니다. 문서, 사진, 음악, 비디오 및 데스크탑 폴더가 이미 원드라이브에 백업되는 반면에 내 프로그램들과 설정들은 어떤가요?\n놀랍게도 애플은 클라우드 서비스를 사용한 백업 옵션을 타임머신에서 제공하지 않습니다. 하지만 우리는 답을 찾을 것이다. 늘 그랬듯이..(의역)\n하지만 그렇게 열심히 찾아보지 않아도 되었습니다. 이전에 타임머신 백업을 네트워크 드라이브에 저장하는 방법을 약간의 수정을 통해서 할 수 있는 방법을 기사로 썼습니다. 다음은 타임머신을 원드라이브, 구글드라이브, 아이클라우드 또는 원하는 클라우드 서비스에 저장할 수 있는 방법입니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#어떻게-작동하는가",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#어떻게-작동하는가",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "어떻게 작동하는가?",
+    "text": "어떻게 작동하는가?\n이 글의 목적상 원드라이브를 사용하고 있지만 다른 클라우드 서비스도 동일한 방식으로 작동합니다. 맥에서 이미 클라우드 동기화 서비스를 사용하고 있다고 가정하면 다음 단계를 따르는 것이 매우 간단하며 몇 분 정도 걸립니다.\n가상 드라이브를 생성하여 클라우드 서비스에 저장한 다음 맥에 마운트 해야 합니다. 타임머신 설정을 약간 조정하면 맥에서 가상 드라이브를 인식하고 자동으로 저장을 시작합니다.\nmacOS가 변경 사항을 가상 드라이브에 저장할 때마다 원드라이브 앱은 해당 변경사항을 클라우드에 다시 동기화합니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#가상-드라이브-생성",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#가상-드라이브-생성",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "가상 드라이브 생성",
+    "text": "가상 드라이브 생성\n가상 드라이브의 장점은 전체 1TB를 가상 드라이브에 할당된 공간으로 지정하더라도 실제 차지하는 공간은 그 안에 포함된 파일의 크기만큼만 됩니다.\n클라우드 드라이브 폴더 내에 디스크 이미지를 저장해야 합니다. 맥에서 원드라이브 폴더를 찾고 디스크 이미지를 여기에 저장했습니다.\n\n디스크 유틸리티를 엽니다. 간단하게 Spotlight나 Alfred를 이용해 검색할 수 있습니다.- 파일 메뉴에서 새로운 이미지(New Image) > 빈 이미지(Black Image)를 선택합니다. (단축키 cmd+n)\n클라우드 폴더를 찾아서 가상 드라이브 이름을 설정합니다. (MacBookTM)- 가상드라이브의 최대 용량을 입력합니다. 저의 경우 200 GB를 입력했습니다.- 포맷을 Mac OS 확장 (저널링)로 선택합니다.\n암호화는 사용해도 되고 안 해도 되는데 사용한다면 128-bit 를 선택합니다. 그러면 암호를 입력하는 창이 뜨는데 복구할 때 사용하기 때문에 잊어버리면 안 됩니다.\n파티션을 단일 파티션으로 설정합니다.\n마지막으로 이미지 포맷을 분할 번들 디스크 이미지(sparse bundle disk image)로 선택합니다.\n디스크 이미지 사이즈를 체크합니다. - 저의 경우 이미지 포맷을 변경하니까 사이즈가 기본으로 변경되어 다시 수정하였습니다.\n\n완료하였다면 디스크 유틸리티를 종료 할 수 있습니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#가상-드라이브-마운트",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#가상-드라이브-마운트",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "가상 드라이브 마운트",
+    "text": "가상 드라이브 마운트\n저의 경우 자동으로 가상 드라이브가 마운트 되고 MacBookTM이 나타났습니다.\n자동으로 마운트 되지 않을 경우 파인더를 열고 디스크 이미지를 저장한 위치로 이동하여 두 번 클릭하면 됩니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#가상-드라이브를-인식하도록-타임머신-구성",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#가상-드라이브를-인식하도록-타임머신-구성",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "가상 드라이브를 인식하도록 타임머신 구성",
+    "text": "가상 드라이브를 인식하도록 타임머신 구성\n이 파트는 조금 까다로워 보이지만 실제로는 간단합니다.\n\n\n\n저와 창이 다를 수 있습니다.\n\n\n\n터미널을 엽니다. (저와 다른 창이 떠도 괜찮습니다.)\n아래의 명령어를 입력합니다. 여기서 {mounted-disk-image}는 마운트 된 디스크의 이름입니다.\nsudo tmutil setdestination /Volumes/{mounted-disk-image}\n\n#저는 MacBookTimeMachine으로 했으니까 위의 이미지 처럼 입력하였습니다.\nEnter를 누르세요.\n비밀번호를 입력하라고 나오면 입력하고 Enter를 누르세요.\n입력이 완료되면 exit를 눌러 터미널을 종료합니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#타임머신-설정",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#타임머신-설정",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "타임머신 설정",
+    "text": "타임머신 설정\n거의 다 끝났습니다. 👏\n\n시스템 환경설정에서 타임머신을 열면 새로 만든 드라이브가 자동으로 나타납니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#타임머신에서-onedrive-폴더-제외",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#타임머신에서-onedrive-폴더-제외",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "타임머신에서 OneDrive 폴더 제외",
+    "text": "타임머신에서 OneDrive 폴더 제외\n이 부분은 권장하는 파트입니다. 그렇지 않으면 클라우드 동기화 폴더 포함하여 타임머신이 백업한 다음에 클라우드 동기화를 진행합니다.\n폴더를 제외하려면\n\n타임머신 환경설정에서 옵션을 클릭합니다.\n+ 아이콘을 클릭하고 클라우드 폴더를 선택합니다. (예: Onedrive 또는 googledrive)\n저장을 클릭합니다."
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#그리고-당신은..",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#그리고-당신은..",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "그리고 당신은..",
+    "text": "그리고 당신은..\n타임머신이 가상드라이브 백업을 시작하고 원드라이브에 해당 변경 사항을 동기화할 것입니다. 더는 외장하드를 검색하거나 네트워크 서버 연결을 기다릴 필요가 없습니다.\n백업을 다운받기 위해서 조금 고통스럽겠지만 저를 믿으세요!"
+  },
+  {
+    "objectID": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#코멘트",
+    "href": "posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html#코멘트",
+    "title": "맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)",
+    "section": "📝코멘트",
+    "text": "📝코멘트\n백업을 진행하다 보면 매우 느린 속도에 좌절하게 되지만 이 속도를 개선해 줄 방법이 있습니다. 아래의 링크를 참고해주세요.\n\n맥에서 타임머신 백업 시간을 크게 줄여주는 마법 같은 명령어"
+  },
+  {
+    "objectID": "posts/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot.html",
+    "href": "posts/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot.html",
+    "title": "여러개의 ROC-Curves를 하나의 plot 안에 그리는 방법",
+    "section": "",
+    "text": "Load a toy Dataset from sklearn\n\nfrom sklearn import datasets\nfrom sklearn.model_selection import train_test_split\n\ndata = datasets.load_breast_cancer()\n\nX = data.data\ny= data.target\n\nX_train, X_test, y_train, y_test = train_test_split(X, y,\n                                                   test_size=.25,\n                                                   random_state=43)\n\n\n\nTraining multiple classifiers and recording the results\n이 장에서는 몇번의 단계를 실행하게 됩니다: 1. 분류기를 인스턴스화하고 목록을 생성 2. 결과 테이블을 DataFrame으로 정의 3. 모델 훈련 및 결과 기록\n우리가 훈련 세트에서 모델을 훈련하고 테스트 세트에서 확률을 예측할겁니다. 확률을 예측한 후 거짓 긍정 비율(FPR), 참 긍정 비율(TPR) 및 AUC 점수를 계산합니다.\n\n# Import the classifiers\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.naive_bayes import GaussianNB\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\n\nfrom sklearn.metrics import roc_curve, roc_auc_score\n\n# Instantiate the classfiers and make a list\nclassifiers = [LogisticRegression(random_state=1234), \n               GaussianNB(), \n               KNeighborsClassifier(), \n               DecisionTreeClassifier(random_state=1234),\n               RandomForestClassifier(random_state=1234)]\n\n# Define a result table as a DataFrame\nresult_table = pd.DataFrame(columns=['classifiers', 'fpr','tpr','auc'])\n\n# Train the models and record the results\nfor cls in classifiers:\n    model = cls.fit(X_train, y_train)\n    yproba = model.predict_proba(X_test)[::,1]\n    \n    fpr, tpr, _ = roc_curve(y_test,  yproba)\n    auc = roc_auc_score(y_test, yproba)\n    \n    result_table = result_table.append({'classifiers':cls.__class__.__name__,\n                                        'fpr':fpr, \n                                        'tpr':tpr, \n                                        'auc':auc}, ignore_index=True)\n\n# Set name of the classifiers as index labels\nresult_table.set_index('classifiers', inplace=True)\n\n\n\nPlot the figure\n\nfig = plt.figure(figsize=(8,6))\n\nfor i in result_table.index:\n    plt.plot(result_table.loc[i]['fpr'], \n             result_table.loc[i]['tpr'], \n             label=\"{}, AUC={:.3f}\".format(i, result_table.loc[i]['auc']))\n    \nplt.plot([0,1], [0,1], color='orange', linestyle='--')\n\nplt.xticks(np.arange(0.0, 1.1, step=0.1))\nplt.xlabel(\"Flase Positive Rate\", fontsize=15)\n\nplt.yticks(np.arange(0.0, 1.1, step=0.1))\nplt.ylabel(\"True Positive Rate\", fontsize=15)\n\nplt.title('ROC Curve Analysis', fontweight='bold', fontsize=15)\nplt.legend(prop={'size':13}, loc='lower right')\n\nplt.show()\n\n\n\n\n아래의 코드를 이용해서 figure를 저장할 수 있습니다.\n\nfig.savefig('multiple_roc_curve.png')\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/deed.ko"
+  },
+  {
+    "objectID": "posts/2022-02-18-DESeq-example/2022-02-18-DESeq-example.html",
+    "href": "posts/2022-02-18-DESeq-example/2022-02-18-DESeq-example.html",
+    "title": "R DESeq2 패키지 python으로 포팅",
+    "section": "",
+    "text": "Dependencies\n\npandas\nrpy2\ntzlocal\nbiopython\nReportLab\npytest-cov\nbioconductor-deseq2\ncodecov\n\nInstall Guide\nconda config --add channels defaults\nconda config --add channels bioconda\nconda config --add channels conda-forge\nconda create -q -n diffexpr python=3.6 \\\n    pandas tzlocal rpy2 biopython ReportLab pytest-cov \\\n    bioconductor-deseq2 codecov\nconda activate diffexpr # activate diffexpr environment\nRscript setup.R #to install DESeq2 correctly \npython setup.py install\n\nNote: 여기에서는 MAQC 데이터의 샘플 A와 B에서 ERCC transcript의 일부 예제를 사용하였다. 아래 실습에서 사용된 파일들은 여기에서 확인하실 수 있다.\n\n필요한 패키지 로드…\n\n%load_ext autoreload\n%autoreload 2\nimport pandas as pd \nimport numpy as np\n\n\ndf = pd.read_table('ercc.txt')\ndf.head()\n\n\n\n\n\n  \n    \n      \n      id\n      A_1\n      A_2\n      A_3\n      B_1\n      B_2\n      B_3\n    \n  \n  \n    \n      0\n      ERCC-00002\n      111461\n      106261\n      107547\n      333944\n      199252\n      186947\n    \n    \n      1\n      ERCC-00003\n      6735\n      5387\n      5265\n      13937\n      8584\n      8596\n    \n    \n      2\n      ERCC-00004\n      17673\n      13983\n      15462\n      5065\n      3222\n      3353\n    \n    \n      3\n      ERCC-00009\n      4669\n      4431\n      4211\n      6939\n      4155\n      3647\n    \n    \n      4\n      ERCC-00012\n      0\n      2\n      0\n      0\n      0\n      0\n    \n  \n\n\n\n\n그리고 여기에서는 유전자 발현의 정량화된 값이 포함된 테이블(count table)의 샘플을 기반으로 design matrix를 생성한다.\n참고로, 샘플 이름은 pd.DataFrame의 인덱스로 사용해야 한다.\n\nsample_df = pd.DataFrame({'samplename': df.columns}) \\\n        .query('samplename != \"id\"')\\\n        .assign(sample = lambda d: d.samplename.str.extract('([AB])_', expand=False)) \\\n        .assign(replicate = lambda d: d.samplename.str.extract('_([123])', expand=False)) \nsample_df.index = sample_df.samplename\nsample_df\n\n\n\n\n\n  \n    \n      \n      samplename\n      sample\n      replicate\n    \n    \n      samplename\n      \n      \n      \n    \n  \n  \n    \n      A_1\n      A_1\n      A\n      1\n    \n    \n      A_2\n      A_2\n      A\n      2\n    \n    \n      A_3\n      A_3\n      A\n      3\n    \n    \n      B_1\n      B_1\n      B\n      1\n    \n    \n      B_2\n      B_2\n      B\n      2\n    \n    \n      B_3\n      B_3\n      B\n      3\n    \n  \n\n\n\n\nDESeq2 패키지가 R에서 실행되는 방식과 유사하지만 count table의 유전자 ID인 row.name 대신에 어떤 열이 유전자 ID인지 알려야 한다.\n\nfrom py_deseq import py_DESeq2\n\ndds = py_DESeq2(count_matrix = df,\n               design_matrix = sample_df,\n               design_formula = '~ replicate + sample',\n               gene_column = 'id') # <- telling DESeq2 this should be the gene ID column\n    \ndds.run_deseq() \ndds.get_deseq_result(contrast = ['sample','B','A'])\nres = dds.deseq_result \nres.head()\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: estimating size factors\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: estimating dispersions\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: gene-wise dispersion estimates\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: mean-dispersion relationship\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: final dispersion estimates\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: fitting model and testing\n\nINFO:DESeq2:Using contrast: ['sample', 'B', 'A']\n\n\n\n\n\n\n  \n    \n      \n      baseMean\n      log2FoldChange\n      lfcSE\n      stat\n      pvalue\n      padj\n      id\n    \n  \n  \n    \n      ERCC-00002\n      167917.342729\n      0.808857\n      0.047606\n      16.990537\n      9.650176e-65\n      1.102877e-63\n      ERCC-00002\n    \n    \n      ERCC-00003\n      7902.634073\n      0.521731\n      0.058878\n      8.861252\n      7.912104e-19\n      4.868987e-18\n      ERCC-00003\n    \n    \n      ERCC-00004\n      10567.048228\n      -2.330122\n      0.055754\n      -41.792764\n      0.000000e+00\n      0.000000e+00\n      ERCC-00004\n    \n    \n      ERCC-00009\n      4672.573043\n      -0.195660\n      0.061600\n      -3.176286\n      1.491736e-03\n      3.616329e-03\n      ERCC-00009\n    \n    \n      ERCC-00012\n      0.384257\n      -1.565491\n      4.047562\n      -0.386774\n      6.989237e-01\n      NaN\n      ERCC-00012\n    \n  \n\n\n\n\n\ndds.normalized_count() #DESeq2 normalized count\n\nINFO:DESeq2:Normalizing counts\n\n\n\n\n\n\n  \n    \n      \n      A_1\n      A_2\n      A_3\n      B_1\n      B_2\n      B_3\n      id\n    \n  \n  \n    \n      ERCC-00002\n      115018.353297\n      122494.471246\n      128809.545168\n      218857.357008\n      207880.854689\n      214443.474968\n      ERCC-00002\n    \n    \n      ERCC-00003\n      6949.952086\n      6209.970889\n      6305.915138\n      9133.911628\n      8955.740754\n      9860.313944\n      ERCC-00003\n    \n    \n      ERCC-00004\n      18237.045763\n      16119.180051\n      18518.909755\n      3319.456296\n      3361.532701\n      3846.164804\n      ERCC-00004\n    \n    \n      ERCC-00009\n      4818.014297\n      5107.922964\n      5043.534405\n      4547.622357\n      4334.937422\n      4183.406812\n      ERCC-00009\n    \n    \n      ERCC-00012\n      0.000000\n      2.305540\n      0.000000\n      0.000000\n      0.000000\n      0.000000\n      ERCC-00012\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      ERCC-00164\n      2.063831\n      1.152770\n      5.988523\n      3.276857\n      1.043306\n      2.294163\n      ERCC-00164\n    \n    \n      ERCC-00165\n      269.329992\n      246.692736\n      287.449123\n      513.811202\n      484.094095\n      489.803869\n      ERCC-00165\n    \n    \n      ERCC-00168\n      1.031916\n      3.458309\n      0.000000\n      4.587600\n      4.173225\n      1.147082\n      ERCC-00168\n    \n    \n      ERCC-00170\n      137.244785\n      148.707304\n      135.340629\n      26.870229\n      10.433062\n      32.118286\n      ERCC-00170\n    \n    \n      ERCC-00171\n      8707.304484\n      9622.169484\n      8818.699555\n      7691.439109\n      7691.253592\n      6892.813691\n      ERCC-00171\n    \n  \n\n92 rows × 7 columns\n\n\n\n\ndds.comparison # show coefficients for GLM\n\n['Intercept', 'replicate_2_vs_1', 'replicate_3_vs_1', 'sample_B_vs_A']\n\n\n\n# from the last cell, we see the arrangement of coefficients, \n# so that we can now use \"coef\" for lfcShrink\n# the comparison we want to focus on is 'sample_B_vs_A', so coef = 4 will be used\nlfc_res = dds.lfcShrink(coef=4, method='apeglm')\nlfc_res.head()\n\nWARNING:rpy2.rinterface_lib.callbacks:R[write to console]: using 'apeglm' for LFC shrinkage. If used in published research, please cite:\n    Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for\n    sequence count data: removing the noise and preserving large differences.\n    Bioinformatics. https://doi.org/10.1093/bioinformatics/bty895\n\n\n\n\n\n\n\n  \n    \n      \n      id\n      baseMean\n      log2FoldChange\n      lfcSE\n      pvalue\n      padj\n    \n  \n  \n    \n      0\n      ERCC-00002\n      167917.342729\n      0.807316\n      0.047609\n      9.650176e-65\n      1.102877e-63\n    \n    \n      1\n      ERCC-00003\n      7902.634073\n      0.519944\n      0.058823\n      7.912104e-19\n      4.868987e-18\n    \n    \n      2\n      ERCC-00004\n      10567.048228\n      -2.328037\n      0.055783\n      0.000000e+00\n      0.000000e+00\n    \n    \n      3\n      ERCC-00009\n      4672.573043\n      -0.194594\n      0.061466\n      1.491736e-03\n      3.616329e-03\n    \n    \n      4\n      ERCC-00012\n      0.384257\n      -0.052326\n      0.820696\n      6.989237e-01\n      NaN\n    \n  \n\n\n\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/deed.ko"
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "",
+    "text": "이 포스팅은 이 글 에 있는 포스팅을 번역한 내용입니다. 오역이나 의역이 있을 수 있습니다.\nOriginal source of this posting os form this article If the original quthor requests deletion, it will be deleted immediately.\n최고의 엔지니어라도 data scientist가 되는건 쉽지 않습니다. 그러나 누구에게나 어렵지는 않으며 미리 알아야 할 몇 가지가 있습니다. 이 기사에서는 이를 살펴보고 데이터과학에서 성공 하기위한 로드맵을 제공합니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#what-you-need-to-do",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#what-you-need-to-do",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "1. What you need to do",
+    "text": "1. What you need to do\n\n목표 시간 설정하라\n코드를 작성하기 위해 알아야 할 지식/경험을 계획하라\n훌륭한 조언을 해주는 똑똑한 사람에게 시간을 할애하라\n흥미로운 데이터셋을 선택하고 검색해보아라\n가장 큰 도전은 시작하는 것\n이진 분류를 잊어라 : 교차 검증(cross-validation) 및 베이지안 알고리즘(Bayesian algorithms)은 훌륭한 데이터 과학자가 되는데 도움이 될 것임\n데이터 과학 인터뷰에서 올바르게 질문하는 방법을 배워라"
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#problem-statement",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#problem-statement",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "2. Problem Statement",
+    "text": "2. Problem Statement\n모든 질문에 문제 서술을 영어로 작성합니다. 제가 이미 데이터 과학의 문제들을 읽을 수 있게 포스트로 작성해놨습니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#write-some-code",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#write-some-code",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "3. Write some code",
+    "text": "3. Write some code\n코드를 작성하고 돌려보세요. 면접관은 코드를 보고 질문할 것입니다.\n\n데이터 준비에 얼마나 시간이 걸리는지\n문제를 해결하기 위해 팀에 몇명이 필요한지\n무엇이 잘못 될 수 있나요? 이건 작업하기 쉬운 도구 3가지를 선택하는 힌트를 줍니다.\n문제를 해결하는 데 사용할 도구를 작성하세요"
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#prepare-and-evaluate-your-answers",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#prepare-and-evaluate-your-answers",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "4. Prepare and evaluate your answers",
+    "text": "4. Prepare and evaluate your answers\n간결하면서 독창적인 해결방법이 있는지 확인합니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#review-your-answers",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#review-your-answers",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "5. Review your answers",
+    "text": "5. Review your answers\n답변을 수정하고 기존 framework나 tool을 사용하지 않는 이유를 스스로에게 물어봅니다.\n이러면 스스로 더 배울 필요가 있는 영역을 구분하고 향후 면접을 위해 자료를 작성하는데 도움이 됩니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#show-your-solution-to-the-problem",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#show-your-solution-to-the-problem",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "6. Show your solution to the problem",
+    "text": "6. Show your solution to the problem\n추가로, 해결방법을 준비해 제 3자인 면접 관련 조직에게 연락을취해 보여주고 도움을 받으면 좋습니다.\n당신의 해결방법을 노트북에 준비하고 팀과 해결방법에 대해 토의합니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#identify-assumptions",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#identify-assumptions",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "7. Identify Assumptions",
+    "text": "7. Identify Assumptions\n면접관이 회사에 있다고 가정하고 해야할 일들을 정의하세요. 다른 사람들로부터 스스로 돋보이기 위해서는 이 가정은 생략/타협하면 안됩니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#identify-solutions",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#identify-solutions",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "8. Identify Solutions",
+    "text": "8. Identify Solutions\n팀이 예상한 것들과 해야할 일들을 확인해보세요. 시간이 있다면 이러한 것들을 검토해보는 것도 좋습니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#use-the-pareto-principle",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#use-the-pareto-principle",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "9. Use the Pareto Principle",
+    "text": "9. Use the Pareto Principle\n통계의 개념 인 파레토 분포 법칙을 사용하세요. 이 경우 분포는 독립 이벤트 중 가장 좋은 결과를 제공할 가능성이 높습니다."
+  },
+  {
+    "objectID": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#build-a-model",
+    "href": "posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html#build-a-model",
+    "title": "데이터 과학자(Data Scientist)가 되기 위한 10단계",
+    "section": "10. Build a model",
+    "text": "10. Build a model\n모든 질문에는 가지고 있는 데이터에 맞는 답이 있습니다. 강력한 해결방법을 정의하고 적용하는데 시간을 투자하여 향후 있을 면접에서 입증하세요.\n프로그래밍 경험은 데이터 과학에서 매우 중요합니다. 코드없이 코드를 실행하고 버그를 찾아야합니다. 이 경우 코드가 없는 것보다 더 나쁜 코드는 없습니다. 코드를 다시 작성하고 버그를 수정하라는 메시지가 보인다면 data scientist에게 문의하세요.\n프로그래밍 언어의 차이는 문화차이보다 중요하지 않습니다. 두 그룹의 learning curve가 당신이 좋은 기회를 갖기 위해 어디에 집중해야 하는지 고르는 데 도움이 될 겁니다."
+  },
+  {
+    "objectID": "posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html",
+    "href": "posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html",
+    "title": "PyTorch - 01_텐서(Tensor)",
+    "section": "",
+    "text": "Important: 본 내용은 파이토치 한국 사용자 모임의 튜토리얼의 내용이다."
+  },
+  {
+    "objectID": "posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html#numpy-배열을-텐서로-변환하기",
+    "href": "posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html#numpy-배열을-텐서로-변환하기",
+    "title": "PyTorch - 01_텐서(Tensor)",
+    "section": "NumPy 배열을 텐서로 변환하기",
+    "text": "NumPy 배열을 텐서로 변환하기\n\nn = np.ones(5)\nt = torch.from_numpy(n) \n\nNumPy 배열의 변경 사항이 텐서에 반영됩니다.\n\nnp.add(n, 1, out=n)\nprint(f\"t: {t}\")\nprint(f\"n: {n}\")\n\nt: tensor([2., 2., 2., 2., 2.], dtype=torch.float64)\nn: [2. 2. 2. 2. 2.]"
+  },
+  {
+    "objectID": "posts/2021-04-27-python-funtions/index.html",
+    "href": "posts/2021-04-27-python-funtions/index.html",
+    "title": "보통은 잘 모르는 파이썬 내장함수 3가지",
+    "section": "",
+    "text": "파이썬의 기본을 한 번 끝낸 후, 조금 더 심화된 파이썬 문법을 필요로 한다면 배워볼 수 있는 문법들입니다. 중급 문법들은 파이썬을 조금 더 쉽게 작성할 수 있도록 도와주고 불필요한 반복을 없애주죠.\n이번 시간에는 map, filter, reduce에 대해 배워볼건데, 이 3가지 함수들은 list를 다루는 함수입니다. 물론 기본 문법에서 배운 것처럼 이 3가지 함수를 사용하지 않아도 코딩하는 것에는 문제가 없습니다. 하지만 저의 경우에는 아래의 3가지 함수를 통해 반복문을 덜 사용하게 되었고, 불필요한 함수를 따로 만들어줄 필요가 없어서 편했습니다.\n자 그러면 시작해볼까요?"
+  },
+  {
+    "objectID": "posts/2021-04-27-python-funtions/index.html#map",
+    "href": "posts/2021-04-27-python-funtions/index.html#map",
+    "title": "보통은 잘 모르는 파이썬 내장함수 3가지",
+    "section": "map",
+    "text": "map\nmap 은 리스트의 각 요소들을 지정된 함수로 처리하는 기능을 합니다. 쉽게 말하면 A라는 함수가 있고 list B가 있다면 A함수를 B로 수행한 결과를 돌려주는 거라고 할 수 있습니다.\n먼저 for 반복문을 사용하여 정수가 저장된 리스트를 제곱하고 2로 나누어 볼까요?\na = [1, 2, 3, 4]\nresult = []\n\nfor i in range(len(a)):\n    result.append(a[i] ** 2 / 2)\n\nprint(result)\n1, 2, 3, 4의 정수 리스트를 받아 제곱을 해주고 2로 나눠주는 코드입니다. 간단하죠? 실행 결과는 다음과 같습니다.\n\n결과 : [0.5, 2.0, 4.5, 8.0]\n\n이 예제를 map 함수를 사용해볼까요?\na = [1, 2, 3, 4]\n\nprint(list(map(lambda x: x**2/2, a)))\n똑같이 4개의 정수를 각 element를 받아 제곱을 해주고 2로 나눠주는 코드입니다. map 함수 앞에서 list 함수를 통해 list 자료형으로 변환하는 이유는 map 함수의 반환이 list가 아니기 때문인데요. Iterator 로 반환하는 값을 list로 변환하는 것입니다.(Iterator에 대해서는 다음에 따로 글을 써보겠습니다.)"
+  },
+  {
+    "objectID": "posts/2021-04-27-python-funtions/index.html#filter",
+    "href": "posts/2021-04-27-python-funtions/index.html#filter",
+    "title": "보통은 잘 모르는 파이썬 내장함수 3가지",
+    "section": "filter",
+    "text": "filter\n정의 : 무엇을 걸러내다.\n실제 filter 함수의 쓰임도 정의와 같습니다. filter 은 A라는 함수에 대해 리스트 B의 element 중 참에 해당하는 값을 돌려주는 것이라고 할 수 있습니다.\na = [-3, -2, -1, 0, 1, 2, 3]\n\nprint(list(filter(lambda x: x>0, a)))\n-3에서 3까지의 정수중에서 0보다 큰 값을 돌려주는 코드입니다. 참 쉽죠?\n 이 방법이 괜찮은데? \n하지만 꼭 이 방법만을 써야하는건 아닙니다. 우리에게는 list comprehension 이 있습니다.\nmap 함수를 list comprehension으로 구현해 볼까요?\na = [1, 2, 3, 4]\n\nprint([x**2/2 for x in a])\n오히려 더 간결한 것 같기도 하고..\nfilter 함수도 마찬가지입니다.\na = [-3, -2, -1, 0, 1, 2, 3]\n\nprint([x for x in a if x>0])\n이처럼 방금 배운 map과 filter가 마음에 들지 않으면 list comprehension을…쓸 수도 있습니다."
+  },
+  {
+    "objectID": "posts/2021-04-27-python-funtions/index.html#reduce",
+    "href": "posts/2021-04-27-python-funtions/index.html#reduce",
+    "title": "보통은 잘 모르는 파이썬 내장함수 3가지",
+    "section": "reduce",
+    "text": "reduce\nreduce 는 원래는 내장함수였는데 python 3부터 내장함수에서 빠지고 functools에서 가져와야 합니다.\nreduce에 대한 원리는 그림 한장으면 끝납니다.\n\n아이큐 테스트같지만 1부터 5까지 차례대로 더하는 거라는 걸 알 수 있겠죠? 수식으로 표현해 본다면 다음과 같습니다.\n((((1+2)+3)+4)+5)\n코드로 작성해 보면 아래와 같습니다.\nfrom functools import reduce\n\na = [1, 2, 3, 4, 5]\n\nprint(reduce(lambda x, y: x+y, a))\nreduce 함수의 경우에는 list comprehension로 대체할 수 없습니다. 이유는 reduce 함수는 2 element가 입력으로 들어가게 되는데 list comprehension은 2가지 입력을 받지 못하기 때문입니다."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "William의 기술 블로그",
+    "section": "",
+    "text": "송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. 기부해주신 돈은 커피를 마시는데 사용됩니다.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n0 min\n\n\n\n\n\n\n  \n\n\n\n\n데이터 과학자(Data Scientist)가 되기 위한 10단계\n\n\n\n\n\n\n\netc\n\n\n\n\n데이터 과학자가 되기 위해선..?\n\n\n\n\n\n\nOct 5, 2022\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPyTorch - 01_텐서(Tensor)\n\n\n\n\n\n\n\npytorch\n\n\n\n\nPyTorch의 기본 구조인 텐서에 대해서 알아본다.\n\n\n\n\n\n\nFeb 25, 2022\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nR DESeq2 패키지 python으로 포팅\n\n\n\n\n\n\n\nR\n\n\n\n\nrpy2를 활용하여 DESeq2 패키지 파이썬에서 사용하기\n\n\n\n\n\n\nFeb 18, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n여러개의 ROC-Curves를 하나의 plot 안에 그리는 방법\n\n\n\n\n\n\n\nML\n\n\n\n\n여러 모델의 AUC를 비교하기 위한 최고의 방법\n\n\n\n\n\n\nJan 19, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n우분투에 NAS 마운트\n\n\n\n\n\n\n\nubuntu\n\n\n\n\nNAS에 백업된 다수의 대용량 파일에 쉽게 접근하기\n\n\n\n\n\n\nMay 8, 2021\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\n보통은 잘 모르는 파이썬 내장함수 3가지\n\n\n\n\n\n\n\npython\n\n\n\n\nmap, filter, reduce에 해서 알아보자\n\n\n\n\n\n\nApr 27, 2021\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이\n\n\n\n\n\n\n\ndocker\n\n\n\n\nRUN, CMD, ENTRYPOINT 차이에 대해 알아보자\n\n\n\n\n\n\nApr 15, 2021\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\n맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)\n\n\n\n\n\n\n\nmac\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2021\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\n구글 프로필 사진 다운로드하기\n\n\n\n\n\n\n\netc\n\n\n\n\n\n\n\n\n\n\n\nFeb 19, 2021\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "wjd5480@gmail.com"
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "⚡️ Interests",
+    "text": "⚡️ Interests\n\nBioinformatics\nData Scientist\nDeep Learning"
+  },
+  {
+    "objectID": "about.html#educations-and-research-experiences",
+    "href": "about.html#educations-and-research-experiences",
+    "title": "About",
+    "section": "🏫 Educations and Research Experiences",
+    "text": "🏫 Educations and Research Experiences\n\nEducations\nMaster of Science in Dental Science Seoul National University, Seoul, South Korea Graduation Date: Feb 2022\nRelevant Coursework: bioinformatics, Data Analysis, Big data handling"
+  }
+]

@@ -1,0 +1,19 @@
+/*-- scss:defaults --*/
+$theme: "litera" !default;
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans");
+
+p {
+    font-family: "IBM Plex Sans", sans-serif;
+    color: black;
+    line-height: 1.65;
+    font-size: 1.025em;
+    letter-spacing: 0.6px;
+  }
+
+.category {
+  font-family: sans-serif, Helvetica;
+  color: black;
+  letter-spacing: 0.7px;
+  font-size: 1.05em;
+}

@@ -1,0 +1,39 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/wjd5480/
+    - icon: github
+      text: Github
+      href: https://github.com/williamjeong2
+comments: false
+---
+
+## Contact
+
+- [wjd5480@gmail.com](mailto:wjd5480@gmail.com)
+
+---------
+
+## ⚡️ Interests
+
+1. **Bioinformatics**
+2. **Data Scientist**
+3. **Deep Learning**
+
+--------
+
+## 🏫 Educations and Research Experiences
+
+### Educations
+**Master of Science in Dental Science**
+Seoul National University, Seoul, South Korea
+_Graduation Date: Feb 2022_
+
+**Relevant Coursework:** bioinformatics, Data Analysis, Big data handling
+
+
