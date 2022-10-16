@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "eng.study/2022-10-16-exciting/index.html",
+    "href": "eng.study/2022-10-16-exciting/index.html",
+    "title": "신난다, 흥분된다!",
+    "section": "",
+    "text": "Reusehttps://creativecommons.org/licenses/by/4.0/deed.ko"
+  },
+  {
     "objectID": "research.html",
     "href": "research.html",
     "title": "연구 아카이브",
@@ -224,13 +231,6 @@
     "text": "10. Build a model\n모든 질문에는 가지고 있는 데이터에 맞는 답이 있습니다. 강력한 해결방법을 정의하고 적용하는데 시간을 투자하여 향후 있을 면접에서 입증하세요.\n프로그래밍 경험은 데이터 과학에서 매우 중요합니다. 코드없이 코드를 실행하고 버그를 찾아야합니다. 이 경우 코드가 없는 것보다 더 나쁜 코드는 없습니다. 코드를 다시 작성하고 버그를 수정하라는 메시지가 보인다면 data scientist에게 문의하세요.\n프로그래밍 언어의 차이는 문화차이보다 중요하지 않습니다. 두 그룹의 learning curve가 당신이 좋은 기회를 갖기 위해 어디에 집중해야 하는지 고르는 데 도움이 될 겁니다."
   },
   {
-    "objectID": "posts/2022-02-25-pytorch-tensor/Untitled.html",
-    "href": "posts/2022-02-25-pytorch-tensor/Untitled.html",
-    "title": "윌리엄의 기술 블로그",
-    "section": "",
-    "text": "https://creativecommons.org/licenses/by/4.0/deed.ko"
-  },
-  {
     "objectID": "posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html",
     "href": "posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html",
     "title": "PyTorch - 01_텐서(Tensor)",
@@ -273,11 +273,11 @@
     "text": "reduce\nreduce 는 원래는 내장함수였는데 python 3부터 내장함수에서 빠지고 functools에서 가져와야 합니다.\nreduce에 대한 원리는 그림 한장으면 끝납니다.\n\n아이큐 테스트같지만 1부터 5까지 차례대로 더하는 거라는 걸 알 수 있겠죠? 수식으로 표현해 본다면 다음과 같습니다.\n((((1+2)+3)+4)+5)\n코드로 작성해 보면 아래와 같습니다.\nfrom functools import reduce\n\na = [1, 2, 3, 4, 5]\n\nprint(reduce(lambda x, y: x+y, a))\nreduce 함수의 경우에는 list comprehension로 대체할 수 없습니다. 이유는 reduce 함수는 2 element가 입력으로 들어가게 되는데 list comprehension은 2가지 입력을 받지 못하기 때문입니다."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "William의 기술 블로그",
+    "objectID": "eng.html",
+    "href": "eng.html",
+    "title": "Eng.Study",
     "section": "",
-    "text": "송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. 기부해주신 돈은 커피를 마시는데 사용됩니다.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n0 min\n\n\n\n\n\n\n  \n\n\n\n\n데이터 과학자(Data Scientist)가 되기 위한 10단계\n\n\n\n\n\n\n\netc\n\n\n\n\n데이터 과학자가 되기 위해선..?\n\n\n\n\n\n\nOct 5, 2022\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPyTorch - 01_텐서(Tensor)\n\n\n\n\n\n\n\npytorch\n\n\n\n\nPyTorch의 기본 구조인 텐서에 대해서 알아본다.\n\n\n\n\n\n\nFeb 25, 2022\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nR DESeq2 패키지 python으로 포팅\n\n\n\n\n\n\n\nR\n\n\n\n\nrpy2를 활용하여 DESeq2 패키지 파이썬에서 사용하기\n\n\n\n\n\n\nFeb 18, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n여러개의 ROC-Curves를 하나의 plot 안에 그리는 방법\n\n\n\n\n\n\n\nML\n\n\n\n\n여러 모델의 AUC를 비교하기 위한 최고의 방법\n\n\n\n\n\n\nJan 19, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n우분투에 NAS 마운트\n\n\n\n\n\n\n\nubuntu\n\n\n\n\nNAS에 백업된 다수의 대용량 파일에 쉽게 접근하기\n\n\n\n\n\n\nMay 8, 2021\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\n보통은 잘 모르는 파이썬 내장함수 3가지\n\n\n\n\n\n\n\npython\n\n\n\n\nmap, filter, reduce에 해서 알아보자\n\n\n\n\n\n\nApr 27, 2021\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이\n\n\n\n\n\n\n\ndocker\n\n\n\n\nRUN, CMD, ENTRYPOINT 차이에 대해 알아보자\n\n\n\n\n\n\nApr 15, 2021\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\n맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)\n\n\n\n\n\n\n\nmac\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2021\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\n구글 프로필 사진 다운로드하기\n\n\n\n\n\n\n\netc\n\n\n\n\n\n\n\n\n\n\n\nFeb 19, 2021\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\nCategories\n\n\n\n\n\n\n2022/10/16\n\n\n신난다, 흥분된다!\n\n\nI'm so excited. 말고 다른 표현은?\n\n\ntag\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -299,5 +299,12 @@
     "title": "About",
     "section": "🏫 Educations and Research Experiences",
     "text": "🏫 Educations and Research Experiences\n\nEducations\nMaster of Science in Dental Science Seoul National University, Seoul, South Korea Graduation Date: Feb 2022\nRelevant Coursework: bioinformatics, Data Analysis, Big data handling"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "블로그",
+    "section": "",
+    "text": "송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. 기부해주신 돈은 커피를 마시는데 사용됩니다.\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n데이터 과학자(Data Scientist)가 되기 위한 10단계\n\n\n\n\n\n\n\netc\n\n\n\n\n데이터 과학자가 되기 위해선..?\n\n\n\n\n\n\n2022/10/05\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPyTorch - 01_텐서(Tensor)\n\n\n\n\n\n\n\npytorch\n\n\n\n\nPyTorch의 기본 구조인 텐서에 대해서 알아본다.\n\n\n\n\n\n\n2022/02/25\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nR DESeq2 패키지 python으로 포팅\n\n\n\n\n\n\n\nR\n\n\n\n\nrpy2를 활용하여 DESeq2 패키지 파이썬에서 사용하기\n\n\n\n\n\n\n2022/02/18\n\n\n0 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n여러개의 ROC-Curves를 하나의 plot 안에 그리는 방법\n\n\n\n\n\n\n\nML\n\n\n\n\n여러 모델의 AUC를 비교하기 위한 최고의 방법\n\n\n\n\n\n\n2022/01/19\n\n\n0 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n우분투에 NAS 마운트\n\n\n\n\n\n\n\nubuntu\n\n\n\n\nNAS에 백업된 다수의 대용량 파일에 쉽게 접근하기\n\n\n\n\n\n\n2021/05/08\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\n보통은 잘 모르는 파이썬 내장함수 3가지\n\n\n\n\n\n\n\npython\n\n\n\n\nmap, filter, reduce에 해서 알아보자\n\n\n\n\n\n\n2021/04/27\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🐳 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이\n\n\n\n\n\n\n\ndocker\n\n\n\n\nRUN, CMD, ENTRYPOINT 차이에 대해 알아보자\n\n\n\n\n\n\n2021/04/15\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\n맥 타임머신을 클라우드 서비스에 하기(원드라이브, 구글드라이브, 드랍박스 등)\n\n\n\n\n\n\n\nmac\n\n\n\n\n\n\n\n\n\n\n\n2021/02/20\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\n구글 프로필 사진 다운로드하기\n\n\n\n\n\n\n\netc\n\n\n\n\n\n\n\n\n\n\n\n2021/02/19\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -1,0 +1,21 @@
+---
+title: "Eng.Study"
+listing:
+  contents: eng.study/**/*.qmd
+  sort: "date desc"
+  fields: [date, title, description, categories]
+  type: table
+  categories: true
+  sort-ui: true
+  filter-ui: false
+  sort: "date desc"
+  date-format: "YYYY/MM/DD"
+page-layout: full
+title-block-banner: false
+comments: false
+---
+
+개인적으로 공부한 영어를 정리합니다
+
+::: {#sample-listings}
+:::

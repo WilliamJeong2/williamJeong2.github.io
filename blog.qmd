@@ -1,5 +1,5 @@
 ---
-title: "William의 기술 블로그"
+title: "블로그"
 listing:
   contents: posts
   fields: [image, title, description, reading-time, categories, date]
@@ -9,6 +9,7 @@ listing:
   sort-ui: false
   filter-ui: false
   sort: "date desc"
+  date-format: "YYYY/MM/DD"
 page-layout: full
 title-block-banner: false
 comments: false

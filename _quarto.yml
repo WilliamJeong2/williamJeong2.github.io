@@ -13,15 +13,17 @@ website:
     right:
       - href: about.qmd
         text: 홈
-      - href: index.qmd
+      - href: blog.qmd
         text: 블로그
       - href: research.qmd
         text: 연구 아카이브
+      - href: eng.qmd
+        text: Eng.Study
       - icon: github
         href: https://github.com/
       - icon: linkedin
         href: https://www.linkedin.com/in/wjd5480/
-  cookie-consent: true
+  cookie-consent: false
   google-analytics: UA-150213770-1
 
 format:

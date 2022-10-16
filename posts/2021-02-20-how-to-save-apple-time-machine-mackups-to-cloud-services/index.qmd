@@ -53,7 +53,7 @@ macOS가 변경 사항을 가상 드라이브에 저장할 때마다 원드라�
 
 이 파트는 조금 까다로워 보이지만 실제로는 간단합니다.
 
-![저와 창이 다를 수 있습니다.](images/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services-1.png)
+![저와 창이 다를 수 있습니다.](images/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services-1.webp)
 
 - **터미널**을 엽니다.
   (저와 다른 창이 떠도 괜찮습니다.)
@@ -76,7 +76,7 @@ macOS가 변경 사항을 가상 드라이브에 저장할 때마다 원드라�
 
 거의 다 끝났습니다. 👏
 
-![](images/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services-2.png)
+![](images/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services-2.webp)
 
 시스템 환경설정에서 타임머신을 열면 새로 만든 드라이브가 자동으로 나타납니다.
 

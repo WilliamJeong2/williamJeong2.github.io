@@ -14,7 +14,7 @@ categories:
 
 최고의 엔지니어라도 data scientist가 되는건 쉽지 않습니다. 그러나 누구에게나 어렵지는 않으며 미리 알아야 할 몇 가지가 있습니다. 이 기사에서는 이를 살펴보고 [데이터과학에서 성공](https://towardsdatascience.com/practical-guide-to-become-a-data-scientist-2483a5f83770) 하기위한 로드맵을 제공합니다.
 
-![](2021-02-18-10-steps-to-become-a-data-scientist.png)
+![](2021-02-18-10-steps-to-become-a-data-scientist.webp)
 
 ## 1. What you need to do
 

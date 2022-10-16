@@ -2,18 +2,51 @@
 $theme: "litera" !default;
 
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+@import url('https://webfontworld.github.io/ridi/RidiBatang.css');
+@import url('https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css');
+@import url('https://webfontworld.github.io/pretendard/Pretendard.css');
 
 p {
-    font-family: "IBM Plex Sans", sans-serif;
-    color: black;
-    line-height: 1.65;
-    font-size: 1.025em;
-    letter-spacing: 0.6px;
-  }
+  font-family: "Pretendard";
+  font-weight: inherit;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "RIDIBatang";
+  color: #595959;
+}
+
+.quarto-listing-category-title {
+  font-family: "Noto Sans KR";
+}
 
 .category {
-  font-family: sans-serif, Helvetica;
   color: black;
-  letter-spacing: 0.7px;
-  font-size: 1.05em;
+  font-family: "Noto Sans KR";
+  // letter-spacing: 0.7px;
+  font-size: 0.85em;
+}
+
+code.sourceCode {
+  font-family: 'd2coding', monospace;
+  font-size: 0.85rem;
+}
+
+code {
+  font-family: 'd2coding', monospace;
+  font-size: 0.85rem;
+}
+
+div.listing-reading-time {
+  font-family: "Pretendard";
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+#toc-title {
+  font-family: "Noto Sans KR";
+  font-size: 14px;
 }

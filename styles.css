@@ -1,1 +1,4 @@
-/* css styles */
+/*-- scss:defaults --*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap');
+
+$theme: "litera" !default;

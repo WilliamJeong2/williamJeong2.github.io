@@ -1,8 +1,13 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/eng.html",
     "items": [
-      "/posts/2022-02-25-pytorch-tensor/Untitled.html",
+      "/eng.study/2022-10-16-exciting/index.html"
+    ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
       "/posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html",
       "/posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html",
       "/posts/2022-02-18-DESeq-example/2022-02-18-DESeq-example.html",
