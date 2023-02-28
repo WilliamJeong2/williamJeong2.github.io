@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -94,26 +94,30 @@ ga('send', {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">홈</a>
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">홈</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">블로그</a>
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">블로그</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./research.html" aria-current="page">연구 아카이브</a>
+    <a class="nav-link active" href="./research.html" aria-current="page">
+ <span class="menu-text">연구 아카이브</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eng.html">Eng.Study</a>
+    <a class="nav-link" href="./eng.html">
+ <span class="menu-text">Eng.Study</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/wjd5480/"><i class="bi bi-linkedin" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -150,6 +154,7 @@ ga('send', {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -162,25 +167,25 @@ ga('send', {
 <h2 class="anchored" data-anchor-id="alopax-algo"><a href="http://alopaxalgo.com"><strong>Alopax-Algo</strong></a></h2>
 <p><strong>Researcher</strong> (2019.09-현재)</p>
 <ul>
-<li><strong>항암제 복합처방을 위한 인공지능 약물 추천시스템</strong> (2020.11~ / EuroStars2 산업통상자원부)
+<li><strong>항암제 복합처방을 위한 인공지능 약물 추천시스템</strong> (2020.11 ~ 2022.10 / EuroStars2 산업통상자원부)
 <ul>
 <li>환자의 유전체 및 다양한 오믹스 데이터 분석 기술</li>
 </ul></li>
-<li><strong>다중오믹스 폐암 바이오마커 패널 제작 및 인공지능 SW 개발</strong> (2021.04~2021.10)
+<li><strong>다중오믹스 폐암 바이오마커 패널 제작 및 인공지능 SW 개발</strong> (2021.04 ~ 2021.10)
 <ul>
 <li>유전체, 전사체, 후성유전체의 다중오믹스 기반 암 분석파이프라인 구축</li>
 <li>인공지능 폐암 진단 알고리즘 개발</li>
 </ul></li>
-<li><strong>유방암 환자 빅데이터를 이용한 임상 약물 추천 서비스 개발</strong> (2020.09~ 2022.09/ 중소벤처기업부)
+<li><strong>유방암 환자 빅데이터를 이용한 임상 약물 추천 서비스 개발</strong> (2020.09~ 2022.09 / 중소벤처기업부)
 <ul>
 <li>암환자 유전체 데이터(NGS) 분석 파이프라인 구축</li>
 </ul></li>
-<li><strong>표현형과 유전형 기반의 디지털 행동 분석 및 개입 모델 서비스</strong> (2020.09~2020.12)
+<li><strong>표현형과 유전형 기반의 디지털 행동 분석 및 개입 모델 서비스</strong> (2020.09 ~ 2020.12)
 <ul>
 <li>표현형과 유전형 기반의 질병 상관도 분석</li>
 <li>코호트 기반 개인별 건강 검진 데이터와 코호트 대상자의 유전체 데이터 구축</li>
 </ul></li>
-<li><strong>암 타겟 단백질 10종 텍스트 데이터베이스 구축</strong> (2020.07~2020.12)
+<li><strong>암 타겟 단백질 10종 텍스트 데이터베이스 구축</strong> (2020.07 ~ 2020.12)
 <ul>
 <li>암질환에 특이적인 PROTAC 타겟 발굴을 위한 텍스트마이닝 수행, 단백질 사전 구축, 단백질 상호작용 추출, 신호전달 추출, pubmed, pubmed central, 미국특허 정보 추출</li>
 </ul></li>
@@ -236,7 +241,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -272,24 +294,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

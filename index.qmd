@@ -8,7 +8,6 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-  sort: "date desc"
   date-format: "YYYY/MM/DD"
 page-layout: full
 title-block-banner: false
