@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="William">
+
+<title>윌리엄의 기술 블로그 - 유전체 분석을 위한 파이썬 라이브러리 소개</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-150213770-1', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">윌리엄의 기술 블로그</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">홈</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">블로그</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html">
+ <span class="menu-text">연구 아카이브</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../eng.html">
+ <span class="menu-text">Eng.Study</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/williamjeong2"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/wjd5480/"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#biopython" id="toc-biopython" class="nav-link" data-scroll-target="#biopython">Biopython</a></li>
+  <li><a href="#pyvcf" id="toc-pyvcf" class="nav-link" data-scroll-target="#pyvcf">PyVCF</a>
+  <ul class="collapse">
+  <li><a href="#vcf-파일-읽기" id="toc-vcf-파일-읽기" class="nav-link" data-scroll-target="#vcf-파일-읽기">1. VCF 파일 읽기</a></li>
+  <li><a href="#필드에-대한-정보-추출" id="toc-필드에-대한-정보-추출" class="nav-link" data-scroll-target="#필드에-대한-정보-추출">2. 필드에 대한 정보 추출</a></li>
+  <li><a href="#필드-정보-수정-및-vcf-파일-쓰기" id="toc-필드-정보-수정-및-vcf-파일-쓰기" class="nav-link" data-scroll-target="#필드-정보-수정-및-vcf-파일-쓰기">3. 필드 정보 수정 및 VCF 파일 쓰기</a></li>
+  </ul></li>
+  <li><a href="#deseq2" id="toc-deseq2" class="nav-link" data-scroll-target="#deseq2">DESeq2</a></li>
+  <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas">Pandas</a>
+  <ul class="collapse">
+  <li><a href="#유전체-데이터를-읽기" id="toc-유전체-데이터를-읽기" class="nav-link" data-scroll-target="#유전체-데이터를-읽기">1. 유전체 데이터를 읽기</a></li>
+  <li><a href="#데이터-필터링" id="toc-데이터-필터링" class="nav-link" data-scroll-target="#데이터-필터링">2. 데이터 필터링</a></li>
+  <li><a href="#데이터-결합" id="toc-데이터-결합" class="nav-link" data-scroll-target="#데이터-결합">3. 데이터 결합</a></li>
+  <li><a href="#데이터-계산" id="toc-데이터-계산" class="nav-link" data-scroll-target="#데이터-계산">4. 데이터 계산</a></li>
+  <li><a href="#데이터-시각화" id="toc-데이터-시각화" class="nav-link" data-scroll-target="#데이터-시각화">5. 데이터 시각화</a></li>
+  </ul></li>
+  <li><a href="#scikit-learn" id="toc-scikit-learn" class="nav-link" data-scroll-target="#scikit-learn">Scikit-learn</a></li>
+  <li><a href="#outro" id="toc-outro" class="nav-link" data-scroll-target="#outro">Outro</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">유전체 분석을 위한 파이썬 라이브러리 소개</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Bioinformatics</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>William </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 2월 28일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>생물정보학 분야에서 유전체 분석을 위해 파이썬은 매우 유용한 언어 중 하나입니다.(<code>R</code>도 정말 유용합니다.) 파이썬이 데이터 분석, 머신 러닝, 딥 러닝 등 다양한 분야에서 활용될 수 있기 때문입니다. 또한, 파이썬은 다양한 생물학 데이터를 처리하고 시각화하는 데 매우 효과적입니다. 이번 포스팅에서는 유전체 분석을 위해 유용한 파이썬 라이브러리 몇 가지를 소개합니다.</p>
+<blockquote class="blockquote">
+<p>소개되는 라이브러리는 목차를 참고해주세요.</p>
+</blockquote>
+</section>
+<section id="biopython" class="level2">
+<h2 class="anchored" data-anchor-id="biopython">Biopython</h2>
+<p>Biopython은 파이썬에서 <strong>생물학 데이터를 처리하는 데 사용되는 강력한 라이브러리</strong>입니다. 이 라이브러리는 DNA, RNA 및 단백질 시퀀스 데이터와 관련된 다양한 작업을 수행할 수 있습니다. 예를 들어, 시퀀스를 로드하고 저장하거나, BLAST, Clustal 및 BLAT과 같은 다양한 시퀀스 정렬 및 유사성 검색 도구를 사용할 수 있습니다.(실제로 기능이 매우 많아서 꼭 한번 살펴보시길 바랍니다.)</p>
+<p>Biopython을 사용하면 시퀀스를 다루는 것 외에도, 파일 입출력, 의생명데이터베이스 쿼리, 그리고 시퀀스 시각화 등 다양한 작업을 수행할 수 있습니다. Biopython은 파이썬 2.x 및 3.x 버전을 지원하며, 다양한 운영체제에서 사용할 수 있습니다.</p>
+<p>Biopython은 생물정보학 분야에서 다양한 연구에 활용될 수 있는 매우 방대하고 유용한 라이브러리입니다. 하지만, 이러한 방대한 기능을 활용하기 위해서는 파이썬 프로그래밍에 대한 기초적인 이해와 함께, 생물학적 지식도 함께 필요합니다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Biopython을 이용하여 FASTA 파일을 읽어들이는 예시 코드</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> SeqIO</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> SeqIO.parse(<span class="st">"example.fasta"</span>, <span class="st">"fasta"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> records:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(record.<span class="bu">id</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>뿐만 아니라, DNA 서열의 역상보 및 상보 서열을 계산하거나, 서열 정렬, 다양한 서열 데이터베이스와의 상호작용 등을 지원합니다. 또한, 유전체 서열 분석을 위한 다양한 알고리즘, 예를 들면 <a href="https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm">Smith-Waterman 알고리즘</a>, <a href="https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm">Needleman-Wunsch 알고리즘</a> 등을 구현하여 제공합니다.</p>
+<p>또한, Biopython은 유전체 데이터 분석에서 더 나은 가독성과 유지보수성을 제공하기 위해 다양한 파이썬 패키지와 통합되어 있습니다. 예를 들어, Biopython은 NumPy, SciPy, matplotlib, pandas와 같은 다른 데이터 분석 도구들과 함께 사용되어, 유전체 데이터 분석의 다양한 단계에서 효율적으로 활용될 수 있습니다.</p>
+<p>하지만, Biopython은 굉장히 방대한 라이브러리이기 때문에, 이 포스팅에서는 Biopython의 일부 기능만 소개하겠습니다. 자세한 내용은 <a href="https://biopython.org/">Biopython 공식 홈페이지</a>를 참고하시기 바랍니다.</p>
+</section>
+<section id="pyvcf" class="level2">
+<h2 class="anchored" data-anchor-id="pyvcf">PyVCF</h2>
+<p>PyVCF는 파이썬에서 VCF (Variant Call Format) 파일을 다루는 데 사용되는 라이브러리입니다. VCF 파일은 다양한 종류의 유전체 변이 데이터를 저장하는 데 사용됩니다. PyVCF는 VCF 파일의 읽기, 쓰기, 수정 등 다양한 작업을 수행할 수 있습니다.</p>
+<p>PyVCF는 파이썬으로 작성된 오픈 소스 라이브러리이며, VCF 파일을 다루는 데 필요한 다양한 도구와 함수를 제공합니다. 이 라이브러리를 사용하면 VCF 파일의 내용을 쉽게 파싱하고, 각각의 <strong>변이 정보에 대한 데이터를 추출</strong>하고, 필요한 경우 수정하거나 새로운 VCF 파일을 작성할 수 있습니다.</p>
+<p>VCF 파일은 유전체 변이 정보를 포함하며, 이는 각각의 DNA 염기 서열에서 나타나는 변화를 의미합니다. 이러한 변화는 단일 염기 다형성(SNP), 삽입/삭제(indel), 구조적 변화(예: 염색체 재배열) 등의 다양한 형태로 나타납니다. 이러한 변이 정보는 다양한 유전체 연구 분야에서 중요한 역할을 합니다.</p>
+<p>PyVCF는 VCF 파일에서 각각의 변이 정보를 파싱하여 쉽게 접근할 수 있는 객체로 만들어 줍니다. 이러한 객체는 각각의 변이 정보에 대한 다양한 속성과 메서드를 제공하며, 필요한 경우 다른 라이브러리와 연동하여 유전체 데이터 분석을 수행할 수 있습니다.</p>
+<p>또한 PyVCF는 VCF 파일의 내용을 필요에 따라 수정하거나, 새로운 VCF 파일을 생성하는 기능도 제공합니다. 이를 통해 유전체 데이터 분석에서 필요한 전처리 작업을 효율적으로 수행할 수 있습니다.</p>
+<p>최근에는 PyVCF 라이브러리의 개발이 중단되었으나, 여전히 많은 유전체 연구자들이 이를 사용하고 있으며, 파이썬 기반의 유전체 데이터 분석에서 필수적인 도구 중 하나입니다.</p>
+<p>PyVCF 라이브러리를 사용하여 VCF 파일을 읽고, VCF 파일의 정보를 파싱하는 간단한 예시 코드를 몇 가지 알려드리겠습니다.</p>
+<section id="vcf-파일-읽기" class="level3">
+<h3 class="anchored" data-anchor-id="vcf-파일-읽기">1. VCF 파일 읽기</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vcf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># VCF 파일을 열어서 파서 객체 생성</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>vcf_reader <span class="op">=</span> vcf.Reader(<span class="bu">open</span>(<span class="st">'example.vcf'</span>, <span class="st">'r'</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 각각의 변이 정보에 대한 객체를 순회하며 출력</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> vcf_reader:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(record)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="필드에-대한-정보-추출" class="level3">
+<h3 class="anchored" data-anchor-id="필드에-대한-정보-추출">2. 필드에 대한 정보 추출</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vcf</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># VCF 파일을 열어서 파서 객체 생성</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>vcf_reader <span class="op">=</span> vcf.Reader(<span class="bu">open</span>(<span class="st">'example.vcf'</span>, <span class="st">'r'</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 각각의 변이 정보에 대한 객체를 순회하며 필요한 필드 정보 추출</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> vcf_reader:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># CHROM 필드: 변이가 발생한 염색체 이름</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    chrom <span class="op">=</span> record.CHROM</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># POS 필드: 변이가 발생한 위치</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> record.POS</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># REF 필드: 원래 염기 서열</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    ref <span class="op">=</span> record.REF</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ALT 필드: 변이된 염기 서열</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    alt <span class="op">=</span> record.ALT</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># QUAL 필드: 변이가 발생한 신뢰도</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    qual <span class="op">=</span> record.QUAL</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># INFO 필드: 추가적인 변이 정보</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> record.INFO</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 필요한 정보를 이용하여 다양한 분석 수행 가능</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(chrom, pos, ref, alt, qual, info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="필드-정보-수정-및-vcf-파일-쓰기" class="level3">
+<h3 class="anchored" data-anchor-id="필드-정보-수정-및-vcf-파일-쓰기">3. 필드 정보 수정 및 VCF 파일 쓰기</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vcf</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># VCF 파일을 열어서 파서 객체 생성</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>vcf_reader <span class="op">=</span> vcf.Reader(<span class="bu">open</span>(<span class="st">'example.vcf'</span>, <span class="st">'r'</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 변이 정보 수정 후, 새로운 VCF 파일에 쓰기</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>vcf_writer <span class="op">=</span> vcf.Writer(<span class="bu">open</span>(<span class="st">'new_example.vcf'</span>, <span class="st">'w'</span>), vcf_reader)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> vcf_reader:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 필요한 필드 정보 수정</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    record.QUAL <span class="op">=</span> <span class="fl">99.0</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    record.INFO[<span class="st">'DP'</span>] <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 수정된 객체를 새로운 VCF 파일에 쓰기</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    vcf_writer.write_record(record)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>vcf_writer.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>위 코드들은 각각 VCF 파일을 읽고, 필드 정보를 추출하거나 수정하며, 새로운 VCF 파일에 정보를 쓰는 예시 코드입니다. PyVCF는 이 외에도 다양한 함수와 기능을 제공하므로, 필요에 따라 다양한 분석 작업을 수행할 수 있습니다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyVCF를 이용하여 VCF 파일을 읽어들이는 예시 코드</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vcf</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>vcf_reader <span class="op">=</span> vcf.Reader(<span class="bu">open</span>(<span class="st">'example.vcf'</span>, <span class="st">'r'</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> vcf_reader:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(record.CHROM, record.POS, record.REF, record.ALT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="deseq2" class="level2">
+<h2 class="anchored" data-anchor-id="deseq2">DESeq2</h2>
+<p>DESeq2는 R 언어로 작성된 라이브러리이지만, 파이썬의 rpy2라이브러리를 사용해서 파이썬에서도 사용할 수 있습니다. 이 라이브러리는 RNA 시퀀싱 데이터를 처리하고, <strong>발현 분석 및 유전자 발현 차이 분석</strong>을 수행하는 데 사용됩니다. DESeq2는 매우 정확하고 강력한 통계 기술을 사용하여 RNA 시퀀싱 데이터를 분석하며, 실험 그룹 간의 차이를 식별하는 데 매우 유용합니다.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DESeq2를 이용하여 RNA 시퀀싱 데이터를 분석하는 예시 코드</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2.robjects <span class="im">as</span> robjects</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rpy2.robjects <span class="im">import</span> pandas2ri</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>pandas2ri.activate()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># DESeq2를 R 패키지로부터 로드</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>deseq <span class="op">=</span> robjects.packages.importr(<span class="st">'DESeq2'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 로드 및 전처리</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>count_table <span class="op">=</span> pd.read_csv(<span class="st">'counts.csv'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> pd.read_csv(<span class="st">'metadata.csv'</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># R의 데이터프레임 형식으로 변환</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>count_table_r <span class="op">=</span> pandas2ri.py2ri(count_table)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>metadata_r <span class="op">=</span> pandas2ri.py2ri(metadata)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># DESeq2 객체 생성</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>dds <span class="op">=</span> deseq.DESeqDataSetFromMatrix(countData<span class="op">=</span>count_table_r, colData<span class="op">=</span>metadata_r, design<span class="op">=~</span>group)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 분석 수행</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>dds <span class="op">=</span> deseq.DESeq(dds)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> deseq.results(dds)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 출력</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>pandas_result <span class="op">=</span> pandas2ri.ri2py_dataframe(res)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pandas_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="pandas" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="pandas">Pandas</h2>
+<p>Pandas는 파이썬에서 데이터 처리를 위해 사용되는 라이브러리입니다. 이 라이브러리는 <u>행과 열로 구성된 데이터 테이블을 다루는 데 매우 유용하며, 대용량 데이터를 처리할 때도 빠르고 효과적</u>입니다. Pandas는 유전체 데이터를 다룰 때도 매우 유용한데, 예를 들어 SNP (Single Nucleotide Polymorphism) 데이터와 같은 유전체 데이터를 다룰 때 많이 사용됩니다. 판다스는 다양한 형식의 데이터(생물학정보를 포함하고 있는)를 가져올 수 있는 기능을 포함하고 있으며, 이러한 데이터를 자유롭게 정리, 필터링, 결합 및 계산하는 데 사용됩니다.</p>
+<section id="유전체-데이터를-읽기" class="level3">
+<h3 class="anchored" data-anchor-id="유전체-데이터를-읽기">1. 유전체 데이터를 읽기</h3>
+<p>유전체 데이터는 대개 큰 파일입니다. 판다스의 read_csv() 함수를 사용하여 CSV 형식의 데이터를 쉽게 읽을 수 있습니다. 유전체 데이터를 읽은 후, 판다스 DataFrame을 사용하여 쉽게 탐색 및 조작할 수 있습니다.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 유전체 데이터를 읽기</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'genetic_data.csv'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 확인</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="데이터-필터링" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-필터링">2. 데이터 필터링</h3>
+<p>판다스는 데이터를 쉽게 필터링 할 수 있는 기능을 제공합니다. 예를 들어, 유전체 데이터에서 특정 염색체에 대한 정보만 필터링하려면 다음과 같이합니다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 'chromosome' 열에서 'chr1'만 필터링</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>chr1_data <span class="op">=</span> data[data[<span class="st">'chromosome'</span>] <span class="op">==</span> <span class="st">'chr1'</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 필터링된 데이터 확인</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(chr1_data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="데이터-결합" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-결합">3. 데이터 결합</h3>
+<p>유전체 데이터는 대개 여러 파일로 나뉘어 있습니다. 이러한 파일을 쉽게 결합하기 위해 판다스의 merge() 함수를 사용할 수 있습니다. 예를 들어, 유전체 데이터와 관련된 표현형 데이터를 결합하는 경우 다음과 같이합니다.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 표현형 데이터를 읽기</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>phenotype_data <span class="op">=</span> pd.read_csv(<span class="st">'phenotype_data.csv'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 유전체 데이터와 표현형 데이터 결합</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>merged_data <span class="op">=</span> pd.merge(data, phenotype_data, on<span class="op">=</span><span class="st">'sample_id'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 결합된 데이터 확인</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(merged_data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="데이터-계산" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-계산">4. 데이터 계산</h3>
+<p>판다스는 계산 기능을 제공합니다. 예를 들어, 유전체 데이터에서 특정 SNP (single nucleotide polymorphism)에 대한 allele frequency를 계산하려면 다음과 같이합니다.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 'allele1_count'와 'allele2_count' 열의 값을 사용하여 'allele_frequency' 열 계산</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'allele_frequency'</span>] <span class="op">=</span> data[<span class="st">'allele1_count'</span>] <span class="op">/</span> (data[<span class="st">'allele1_count'</span>] <span class="op">+</span> data[<span class="st">'allele2_count'</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 계산된 데이터 확인</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="데이터-시각화" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="데이터-시각화">5. 데이터 시각화</h3>
+<p>마지막으로, 판다스는 데이터 시각화를 쉽게 할 수 있는 기능을 제공합니다. 예를 들어, 유전체 데이터의 분포를 확인하려면 다음과 같이합니다.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 'allele_frequency' 열의 분포 확인</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'allele_frequency'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 제목 설정</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of allele frequency'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># x축 레이블 설정</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Allele frequency'</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># y축 레이블 설정</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 표시</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="page-columns page-full"><p><img src="fig1.png" class="img-fluid"><br>
+이미지 출처<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Within- and across-breed genomic prediction using whole-genome sequence and single nucleotide polymorphism panels</p></li></div></div>
+<p>이러한 예시를 통해 판다스가 유전체 데이터 분석에서 어떻게 사용되는지 이해할 수 있습니다. 판다스는 데이터 분석 및 시각화에 필수적인 파이썬 라이브러리 중 하나이며, 유전체 데이터와 같은 대용량 데이터를 다룰 때 특히 유용합니다.</p>
+</section>
+</section>
+<section id="scikit-learn" class="level2">
+<h2 class="anchored" data-anchor-id="scikit-learn">Scikit-learn</h2>
+<p>Scikit-learn은 파이썬에서 <strong>머신 러닝</strong>을 위해 사용되는 라이브러리입니다. 이 라이브러리는 분류, 회귀, 클러스터링 등 다양한 머신 러닝 알고리즘을 제공하며, 데이터 전처리, 특징 추출, 차원 축소 등 다양한 기능을 제공합니다. Scikit-learn은 유전체 데이터 분석에도 매우 유용하며, 예를 들어 SNP 데이터를 사용하여 개체 간의 유전적 차이를 분석하는 데 사용됩니다.(물론 Tensorflow, PyTorch도 유전체 데이터 분석에 사용됩니다.)</p>
+<p>Scikit-learn을 사용하면 머신 러닝 모델을 구축하고, 학습시키고, 예측하며, 모델 성능을 평가할 수 있습니다. 또한, 다양한 머신 러닝 알고리즘을 비교하여 가장 적합한 알고리즘을 선택하는 데도 매우 유용합니다.</p>
+<p>Scikit-learn은 다양한 머신 러닝 모델을 제공합니다. 그 중에서도 가장 일반적으로 사용되는 모델은 다음과 같습니다.</p>
+<ol type="1">
+<li>Decision Tree</li>
+<li>Random Forest</li>
+<li>Support Vector Machine (SVM)</li>
+<li>K-Nearest Neighbors (KNN)</li>
+<li>Logistic Regression</li>
+<li>Gradient Boosting</li>
+<li>Neural Networks</li>
+</ol>
+</section>
+<section id="outro" class="level2">
+<h2 class="anchored" data-anchor-id="outro">Outro</h2>
+<p>이상으로, 유전체 분석을 위한 파이썬 라이브러리 소개에 대한 포스팅을 마치겠습니다.</p>
+<p>파이썬은 대용량 유전체 데이터를 다루는 데 매우 효율적인 도구로 자리 잡고 있습니다. 이러한 파이썬 라이브러리들을 사용하면, 유전체 데이터를 다양한 관점에서 분석할 수 있으며, 머신 러닝 모델을 구축하여 예측 모델을 개발할 수 있습니다. 이러한 분석을 통해 개체 간의 유전적 차이를 이해하고, 질병 예측 및 진단, 개인 맞춤형 치료, 각종 생물학적 연구 등 다양한 분야에서 활용할 수 있습니다.</p>
+<p>파이썬 라이브러리들을 사용하여 유전체 데이터를 분석하는 것은 매우 흥미로우며, 파이썬 프로그래밍에 대한 기초적인 이해와 함께, 데이터 분석 및 머신 러닝에 대한 지식을 습득하는 데 큰 도움이 될 것입니다. 또한, 이러한 분석을 통해 파이썬 라이브러리의 활용범위를 넓힐 수 있으며, 데이터 과학 및 인공지능 분야에서 적극적인 역할을 할 수 있습니다.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.ko">https://creativecommons.org/licenses/by/4.0/deed.ko</a></div></section></div></main> <!-- /main -->
+<div>
+<button type="button" class="btn btn-primary btn-lg" onclick="window.open(&quot;https://toss.me/williamj&quot;)">💵Toss로 서포트하기</button>
+<p class="text-muted">송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. <br>기부해주신 돈은 커피를 마시는데 사용됩니다.</p>
+</div>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="williamjeong2/williamjeong2.github.io" data-repo-id="R_kgDOIMJu-w" data-category="Comments" data-category-id="DIC_kwDOIMJu-84CR6zt" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="ko" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
