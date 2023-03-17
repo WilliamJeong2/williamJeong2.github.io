@@ -3,6 +3,7 @@ title: "구글 프로필 사진 다운로드하기"
 description: " "
 date: "2021-02-19"
 draft: false
+freeze: true
 categories:
   - etc
 ---

@@ -3,6 +3,7 @@ title: "\U0001f433 Dockerfile 명령어 RUN, CMD, ENTRYPOINT 차이"
 description: "RUN, CMD, ENTRYPOINT 차이에 대해 알아보자"
 date: "2021-04-15"
 draft: false
+freeze: true
 categories:
   - docker
 ---

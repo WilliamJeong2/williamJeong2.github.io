@@ -3,6 +3,7 @@ title: "맥 타임머신을 클라우드 서비스에 하기(원드라이브, �
 description: " "
 date: "2021-02-20"
 draft: false
+freeze: true
 categories:
   - mac
 ---

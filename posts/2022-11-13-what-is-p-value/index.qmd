@@ -3,6 +3,7 @@ title: "p-value(유의 확률)란 무엇인가?"
 description: "p-value를 이해하고 어떤 의미를 가지는지 알아보자"
 date: "2022-11-13"
 draft: false
+freeze: true
 categories:
   - stat
 ---

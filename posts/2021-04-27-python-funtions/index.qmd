@@ -3,6 +3,7 @@ title: "보통은 잘 모르는 파이썬 내장함수 3가지"
 description: "map, filter, reduce에 해서 알아보자"
 date: "2021-04-27"
 draft: false
+freeze: true
 categories:
   - python
 ---

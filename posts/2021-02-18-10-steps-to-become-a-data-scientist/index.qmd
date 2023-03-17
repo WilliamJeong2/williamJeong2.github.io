@@ -4,6 +4,7 @@ description: "데이터 과학자가 되기 위해선..?"
 author: "William Jeong"
 date: "10/05/2022"
 draft: false
+freeze: true
 toc: true
 categories:
   - etc

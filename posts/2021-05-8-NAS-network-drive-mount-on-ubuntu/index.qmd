@@ -3,6 +3,7 @@ title: "우분투에 NAS 마운트"
 description: "NAS에 백업된 다수의 대용량 파일에 쉽게 접근하기"
 date: "2021-05-08"
 draft: false
+freeze: true
 categories:
   - ubuntu
 ---

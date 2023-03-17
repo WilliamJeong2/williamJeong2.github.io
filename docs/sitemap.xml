@@ -2,66 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://williamjeong2.github.io/eng.html</loc>
-    <lastmod>2023-03-02T15:56:51.643Z</lastmod>
+    <lastmod>2023-03-17T13:51:34.605Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot.html</loc>
-    <lastmod>2023-03-02T15:56:52.015Z</lastmod>
+    <lastmod>2023-03-17T13:51:34.981Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html</loc>
-    <lastmod>2023-03-02T15:56:52.347Z</lastmod>
+    <lastmod>2023-03-17T13:51:35.333Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html</loc>
-    <lastmod>2023-03-02T15:56:52.691Z</lastmod>
+    <lastmod>2023-03-17T13:51:35.677Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-02-19-extract-google-account-profile-picture/index.html</loc>
-    <lastmod>2023-03-02T15:56:52.991Z</lastmod>
+    <lastmod>2023-03-17T13:51:35.977Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-02-18-DESeq-example/2022-02-18-DESeq-example.html</loc>
-    <lastmod>2023-03-02T15:56:53.347Z</lastmod>
+    <lastmod>2023-03-17T13:51:36.337Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2023-02-28-Python-libraries-for-genomic-analysis/index.html</loc>
-    <lastmod>2023-03-02T15:56:53.767Z</lastmod>
+    <lastmod>2023-03-17T13:51:36.757Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-11-13-what-is-p-value/index.html</loc>
-    <lastmod>2023-03-02T15:56:54.087Z</lastmod>
+    <lastmod>2023-03-17T13:51:37.069Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html</loc>
-    <lastmod>2023-03-02T15:56:54.399Z</lastmod>
+    <lastmod>2023-03-17T13:51:37.413Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-04-27-python-funtions/index.html</loc>
-    <lastmod>2023-03-02T15:56:54.735Z</lastmod>
+    <lastmod>2023-03-17T13:51:37.741Z</lastmod>
+  </url>
+  <url>
+    <loc>https://williamjeong2.github.io/posts/2023-03-15-fastq-format/index.html</loc>
+    <lastmod>2023-03-17T13:51:38.117Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html</loc>
-    <lastmod>2023-03-02T15:56:55.115Z</lastmod>
+    <lastmod>2023-03-17T13:51:38.453Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html</loc>
-    <lastmod>2023-03-02T15:56:55.479Z</lastmod>
+    <lastmod>2023-03-17T13:51:38.825Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/eng.study/2022-10-16-exciting/index.html</loc>
-    <lastmod>2023-03-02T15:56:55.783Z</lastmod>
+    <lastmod>2023-03-17T13:51:39.109Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/index.html</loc>
-    <lastmod>2023-03-02T15:56:56.239Z</lastmod>
+    <lastmod>2023-03-17T13:51:39.573Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/research.html</loc>
-    <lastmod>2023-03-02T15:56:56.507Z</lastmod>
+    <lastmod>2023-03-17T13:51:39.841Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/about.html</loc>
-    <lastmod>2023-03-02T15:56:56.815Z</lastmod>
+    <lastmod>2023-03-17T13:51:40.113Z</lastmod>
   </url>
 </urlset>
