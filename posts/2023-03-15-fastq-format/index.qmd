@@ -29,7 +29,7 @@ FASTA 포맷은 단순한 구조를 가지고 있어 연구자들이 유전자, 
 
 요약하자면, FASTA 포맷은 간단한 구조를 가지고 있어 다양한 생명과학 연구에 사용되지만, 품질 정보를 포함하지 않습니다. 반면 FASTQ 포맷은 품질 정보까지 포함하여 DNA 서열 분석에서 더욱 세밀한 연구를 가능케 합니다. 이에 따라 서열 데이터의 용도와 필요한 정보에 따라 연구자들은 적절한 포맷을 선택하여 사용합니다.
 
-![]('images/An-example-of-the-FASTA-format-used-in-iLearn.png')
+![](images/An-example-of-the-FASTA-format-used-in-iLearn.png)
 출처 [^1]
 
 [^1]: \ https://learn.gencore.bio.nyu.edu/ngs-file-formats/fastq-format/
@@ -45,7 +45,7 @@ FASTQ 파일에서 네 줄 각각은 특정한 의미를 지니며 다음과 같
 
 이 네 줄은 FASTQ 파일의 단일 항목을 구성하며, 시퀀싱 데이터셋의 크기에 따라 파일에 수백만 개의 항목이 포함될 수 있습니다.
 
-![]('images/image1.png')
+![](images/image1.png)
 출처[^2]
 
 [^2]: \ https://www.researchgate.net/publication/331702618/figure/fig2/AS:745823247810566@1554829527399/An-example-of-the-FASTA-format-used-in-iLearn.ppm
