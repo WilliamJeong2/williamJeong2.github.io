@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.294">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="William">
+
+<title>윌리엄의 기술 블로그 - 어떤 reference genome을 사용해야 할까?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-150213770-1', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">윌리엄의 기술 블로그</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="검색"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="탐색 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">홈</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">블로그</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">연구 아카이브</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../eng.html" rel="" target="">
+ <span class="menu-text">Eng.Study</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/williamjeong2" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/wjd5480/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#들어가기-전에" id="toc-들어가기-전에" class="nav-link active" data-scroll-target="#들어가기-전에">들어가기 전에</a></li>
+  <li><a href="#이전-버전을-사용해야-하는-이유는-무엇인가" id="toc-이전-버전을-사용해야-하는-이유는-무엇인가" class="nav-link" data-scroll-target="#이전-버전을-사용해야-하는-이유는-무엇인가">1. 이전 버전을 사용해야 하는 이유는 무엇인가?</a></li>
+  <li><a href="#reference-fasta-에는-어떤-서열정보가-포함되어-있는가" id="toc-reference-fasta-에는-어떤-서열정보가-포함되어-있는가" class="nav-link" data-scroll-target="#reference-fasta-에는-어떤-서열정보가-포함되어-있는가">2. reference fasta 에는 어떤 서열정보가 포함되어 있는가?</a></li>
+  <li><a href="#최신-마이너-버전의-사용은-어떤가" id="toc-최신-마이너-버전의-사용은-어떤가" class="nav-link" data-scroll-target="#최신-마이너-버전의-사용은-어떤가">3. 최신 마이너 버전의 사용은 어떤가?</a></li>
+  <li><a href="#정렬alignment을-위해-reference-패스트를-준비하려면-어떤-단계들이-필요한가" id="toc-정렬alignment을-위해-reference-패스트를-준비하려면-어떤-단계들이-필요한가" class="nav-link" data-scroll-target="#정렬alignment을-위해-reference-패스트를-준비하려면-어떤-단계들이-필요한가">4. 정렬(alignment)을 위해 reference 패스트를 준비하려면 어떤 단계들이 필요한가?</a>
+  <ul class="collapse">
+  <li><a href="#grc로부터-제공되는-서열들의-서브셋-구축" id="toc-grc로부터-제공되는-서열들의-서브셋-구축" class="nav-link" data-scroll-target="#grc로부터-제공되는-서열들의-서브셋-구축">GRC로부터 제공되는 서열들의 서브셋 구축</a></li>
+  <li><a href="#염색체-y의-par을-표시" id="toc-염색체-y의-par을-표시" class="nav-link" data-scroll-target="#염색체-y의-par을-표시">염색체 Y의 PAR을 표시</a></li>
+  <li><a href="#서열-이름-바꾸기" id="toc-서열-이름-바꾸기" class="nav-link" data-scroll-target="#서열-이름-바꾸기">서열 이름 바꾸기</a></li>
+  <li><a href="#인덱싱" id="toc-인덱싱" class="nav-link" data-scroll-target="#인덱싱">인덱싱</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">어떤 reference genome을 사용해야 할까?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">bioinformatics</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">저자</div>
+    <div class="quarto-title-meta-contents">
+             <p>William </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 3월 29일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="들어가기-전에" class="level3">
+<h3 class="anchored" data-anchor-id="들어가기-전에">들어가기 전에</h3>
+<ul>
+<li>이 포스팅은 <a href="https://www.biostars.org/p/342482/">Tutorial: Which human reference genome should I use?</a> 에 있는 포스팅을 번역한 내용이 포함되어있습니다. 오역이나 의역이 있을 수 있습니다. 지적해주시면 확인 후에 정정하겠습니다.</li>
+<li>Original source of this posting is form <a href="https://www.biostars.org/p/342482/">Tutorial: Which human reference genome should I use?</a> If the original author requests deletion, it will be deleted immediately.</li>
+</ul>
+<hr>
+<p>“어떤 reference genome을 선택해야 하는가?”는 biostas에서 나오는 상위권 질문들중 하나입니다. 이 질문에 대한 답은 꽤 쉬워보입니다: 가장 최신의 major 버전(GRCh38)을 가져오는 것입니다.(<a href="https://www.ncbi.nlm.nih.gov/grc/human">Genome Reference Consortium</a>)</p>
+<p>그러나 genome 파일을 다운로드 하러가기 전에 다음 질문들이 명확해야 합니다:</p>
+<ol type="1">
+<li>이전 버전을 사용해야 하는 이유는 무엇인가?</li>
+<li>reference fasta 에는 어떤 서열정보가 포함되어 있는가?</li>
+<li>최신 마이너 버전의 사용은 어떤가?</li>
+<li>정렬(alignment)을 위해 reference fasta를 준비하려면 어떤 단계들이 필요한가?</li>
+</ol>
+</section>
+<section id="이전-버전을-사용해야-하는-이유는-무엇인가" class="level2">
+<h2 class="anchored" data-anchor-id="이전-버전을-사용해야-하는-이유는-무엇인가">1. 이전 버전을 사용해야 하는 이유는 무엇인가?</h2>
+<p>시작하기 전에 실험에 사용할 데이터베이스를 확인합니다. 최근 assembly에 대한 데이터 접근이 가능한지? 해당 데이터를 아직 사용할 수 없는 경우 데이터를 최신 버전으로 옮기려면 얼마나 큰 노력을 기울여야 하는지?</p>
+<p><br></p>
+</section>
+<section id="reference-fasta-에는-어떤-서열정보가-포함되어-있는가" class="level2">
+<h2 class="anchored" data-anchor-id="reference-fasta-에는-어떤-서열정보가-포함되어-있는가">2. reference fasta 에는 어떤 서열정보가 포함되어 있는가?</h2>
+<p>최신 메이저 릴리즈 파일은 다음과 같습니다: <a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13</a> (<u>2020/01/14 기준</u>)</p>
+<p>서열은 <code>GCA_000001405.28_GRCh38_genomic.fna.gz</code> 에 있습니다.</p>
+<p>이 파일은 다음의 서열정보를 포함합니다.</p>
+<ol type="1">
+<li>chromosomes 1-22, X, Y</li>
+<li>sequences that can be asigned to one chromosome, but not to an exact position or orientation (<strong>unlocalized sequences</strong>)</li>
+<li>sequences that cannot be assigned to any chromosome (<strong>unplaced sequences</strong>)</li>
+<li>the mitochondrial genome</li>
+<li>sequences that provides an alternate representation of a locus (<strong>alernate locus</strong>)</li>
+</ol>
+<p>(1)-(3) build together the so-called <strong>Primary Assembly</strong>.</p>
+<p><br></p>
+</section>
+<section id="최신-마이너-버전의-사용은-어떤가" class="level2">
+<h2 class="anchored" data-anchor-id="최신-마이너-버전의-사용은-어떤가">3. 최신 마이너 버전의 사용은 어떤가?</h2>
+<p><code>.p&lt;version-number&gt;</code> 라고 나타나는 마이너 버전을 알 수 있을 것입니다. 최신 버전은 GRCh38.p13.입니다. (2020/01/14 기준) 그런데 제가 왜 이 버전의 링크를 제공하지 않았을까요?</p>
+<p>마이너 버전의 서열들은 메이저 버전에서 untouch 되었습니다. 대신에 <strong>패치</strong>라고 불리는 서열정보가 추가되었습니다(여기서 <code>p</code>가 유래됨.). 이런 패치는 기존 서열의 수정일 수 있으며 다음 메이저 릴리즈 버전의 기본 assembly로 통합될 것입니다. 또는 다음 메이저 릴리즈에서 “alternate loci”라고 하는 새로운 서열을 나타내기도 합니다.</p>
+<p>이 <a href="https://www.ncbi.nlm.nih.gov/grc/help/patches">FAQ</a> 에서 패치에 대한 자세한 내용을 읽을 수 있습니다.</p>
+<p>따라서 우리가 특별한 이유가 있지 않은 한, 우리는 정렬(alignment)를 위해 primary assembly 및 mitochondrial genome의 서열을 사용해야 합니다. 그 이유는 다음 챕터에서 말해드리겠습니다.</p>
+<p><br></p>
+</section>
+<section id="정렬alignment을-위해-reference-패스트를-준비하려면-어떤-단계들이-필요한가" class="level2">
+<h2 class="anchored" data-anchor-id="정렬alignment을-위해-reference-패스트를-준비하려면-어떤-단계들이-필요한가">4. 정렬(alignment)을 위해 reference 패스트를 준비하려면 어떤 단계들이 필요한가?</h2>
+<blockquote class="blockquote">
+<p>이 부분에 설명하는 대부분의 내용들은 <a href="http://lh3.github.io/2017/11/13/which-human-reference-genome-to-use">Heng Li</a> 의 블로그 포스트에서 영감을 받았습니다. (Heng Li는 우리가 잘 알고있는 <code>bwa</code> 와 <code>samtools</code> 의 개발자입니다.)</p>
+</blockquote>
+<p>위에 링크된 reference sequence는 다음 세 가지 이유로 정렬(alignment)에 사용할 준비가 되어있지 않습니다:</p>
+<ol type="1">
+<li>loci의 alternate represnetation이 포함됩니다. 이것들은 primary assembly와 매우 유사한데, 그렇기 때문에 대부분의 정렬(alignment)에서는 reads 위치를 알지 못하고 mapping 품질이 매우 낮습니다(variant calling에는 좋지 않다는 걸 의미합니다.).</li>
+<li>염색체 Y에는 유사 염색체 X에 위치한 영역의 복제인 pseudo-autosomal region(PAR)이 있습니다. 이것 또한 정렬(alignment)에서 read의 위치를 알지 못합니다.</li>
+<li>서열들이 <code>1</code> 이라는 이름 대신에 <code>CM000663.2</code> 라는 GeneBank Accesion Numbers 를 가지고 있습니다.</li>
+</ol>
+<p>(1)에서 보여지는 불분명한 mapping은 (2)에서 패치 서열에서도 유효합니다. 이건 우리가 정렬(alignment)을 할 때 최신 마이너 버전을 사용할 필요가 없는 이유입니다.</p>
+<p>그래서 우리는 이렇게 해야합니다:</p>
+<ol type="1">
+<li>GRC로부터 제공되는 서열들의 서브셋을 구축</li>
+<li>염색체 Y의 PAR을 표시</li>
+<li>서열 이름 바꾸기</li>
+</ol>
+<p>이러한 일들을 하기 위해서 우리는 몇가지 파일들이 필요합니다:</p>
+<ul>
+<li>서브셋을 구축하고 서열 이름을 바꾸기 위해 <a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/GCA_000001405.28_GRCh38.p13_assembly_report.txt">GCA_000001405.28_GRCh38.p13_assembly_report.txt</a></li>
+<li>PAR을 표시하기 위해 <a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/GCA_000001405.28_GRCh38.p13_assembly_structure/Primary_Assembly/pseudoautosomal_region/par_align.gff">par_align.gff</a></li>
+</ul>
+<p><br></p>
+<section id="grc로부터-제공되는-서열들의-서브셋-구축" class="level3">
+<h3 class="anchored" data-anchor-id="grc로부터-제공되는-서열들의-서브셋-구축">GRC로부터 제공되는 서열들의 서브셋 구축</h3>
+<p><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/GCA_000001405.28_GRCh38.p13_genomic.fna.gz">reference sequence</a> 를 다운로드 한 후에 압축을 풀고 <code>samtools faidx</code> 로 인덱스한다:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> samtools faidx GCA_000001405.28_GRCh38.p13_genomic.fna</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>GCA_000001405.28_GRCh38.p13_assembly_report.txt</code> 에서 primary assembly들과 mitochondrial genome의 이름들을 추출해야 합니다. 많은 bioinformatic tool들이 서열들이 정리되었다 여깁니다. 따라서 현재 이름을 나중에 사용하려는 서열 이름으로 정렬해야 합니다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-k1,1V</span> GCA_000001405.28_GRCh38.p13_assembly_report.txt<span class="kw">|</span><span class="fu">awk</span> <span class="at">-v</span> FS=<span class="st">"\t"</span> <span class="st">'$8 == "Primary Assembly" || $8 == "non-nuclear" {print $5}'</span> <span class="op">&gt;</span> subset_ids.txt</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이 목록을 사용하여 서열의 서브셋을 구축할 수 있습니다.</p>
+<p><br></p>
+</section>
+<section id="염색체-y의-par을-표시" class="level3">
+<h3 class="anchored" data-anchor-id="염색체-y의-par을-표시">염색체 Y의 PAR을 표시</h3>
+<p><code>par_align.gff</code> 에는 PAR이 X염색체에 있고 그것에 맞먹는 것들이 Y 염색체에 있다는 정보가 들어있습니다. 파일을 열고 각 라인에서 <code>Target</code> 키워드를 찾아보세요. 값은 우리가 마스크하고 싶은 Y 염색체의 위치입니다. 이렇게 하려면 이러한 값을 가진 <code>bed</code> 파일을 우리가 만들어야 합니다(<strong>주의</strong> : <code>gff</code> 는 1-based position이며 <code>bed</code> 는 0-based입니다). 우리는 이렇게 하면 됩니다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat parY.bed</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">CM000686.2</span>  10000   2781479</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">CM000686.2</span>  56887902    57217415</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>bed</code> 파일을 가져오는 한 줄짜리 코드:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="at">-E</span> <span class="st">'s/.*Target=([^;]+).*/\1/g'</span> par_align.gff<span class="kw">|</span><span class="fu">awk</span> <span class="at">-v</span> OFS=<span class="st">"\t"</span> <span class="st">'$0 !~ "^#" {print $1, $2-1, $3}'</span>  <span class="op">&gt;</span> parY.bed</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>bedtools</code> 를 가지고 표시할 수도 있습니다:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bedtools maskfasta <span class="at">-fi</span> GRCh38_subset.fa <span class="at">-bed</span> parY.bed <span class="at">-fo</span> GRCh38_subset_masked.fa</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+</section>
+<section id="서열-이름-바꾸기" class="level3">
+<h3 class="anchored" data-anchor-id="서열-이름-바꾸기">서열 이름 바꾸기</h3>
+<p>최근에는 각각의 서열들의 헤더는 다음과 같습니다:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> CM000663.2</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>우리가 좋아하는 것은 이렇게 하는 겁니다:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>1 <span class="ex">CM000663.2</span> NC_000001.11 chr1</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>첫 공백까지 오는 건 모두 ID가 됩니다. 그 뒤에 오는건 정보가 됩니다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="at">-v</span> FS=<span class="st">"\t"</span> <span class="st">'NR==FNR {header["&gt;"$5] = "&gt;"$1" "$5" "$7" "$10; next} $0 ~ "^&gt;" {$0 = header[$0]}1'</span> GCA_000001405.28_GRCh38.p13_assembly_report.txt GRCh38_subset_masked.fa <span class="op">&gt;</span> GRCh38_alignment.fa</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+</section>
+<section id="인덱싱" class="level3">
+<h3 class="anchored" data-anchor-id="인덱싱">인덱싱</h3>
+<p>이제 <code>GRCh38_alignment.fa</code> 는 정렬에 사용할 준비가 되었습니다. 다른 tool들이 필요로 하기 때문에, 저는 이 파일을 <code>samtools faidx</code> 로 인덱스 하기를 추천합니다. 또한 사용하려는 alignment tool에 설명된 방식으로 인덱싱 해야합니다. 예를 들어 <code>bwa</code> 라면 : <code>bwa index GRCh38_alignment.ga</code></p>
+<hr>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">라이센스</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.ko">https://creativecommons.org/licenses/by/4.0/deed.ko</a></div></div></section></div></main> <!-- /main -->
+<div>
+<button type="button" class="btn btn-primary btn-lg" onclick="window.open(&quot;https://toss.me/williamj&quot;)">💵Toss로 서포트하기</button>
+<p class="text-muted">송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. <br>기부해주신 돈은 커피를 마시는데 사용됩니다.</p>
+</div>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="williamjeong2/williamjeong2.github.io" data-repo-id="R_kgDOIMJu-w" data-category="Comments" data-category-id="DIC_kwDOIMJu-84CR6zt" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="ko" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

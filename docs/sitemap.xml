@@ -2,70 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://williamjeong2.github.io/eng.html</loc>
-    <lastmod>2023-03-17T14:50:18.484Z</lastmod>
+    <lastmod>2023-03-29T16:02:23.614Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot/2022-01-19-Drawing-multiple-ROC-Curves-in-a-single-plot.html</loc>
-    <lastmod>2023-03-17T14:50:18.896Z</lastmod>
+    <lastmod>2023-03-29T16:02:24.026Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-02-18-10-steps-to-become-a-data-scientist/index.html</loc>
-    <lastmod>2023-03-17T14:50:19.216Z</lastmod>
+    <lastmod>2023-03-29T16:02:24.474Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-04-15-docker-run-vs-cmd-vs-entryporint/index.html</loc>
-    <lastmod>2023-03-17T14:50:19.560Z</lastmod>
+    <lastmod>2023-03-29T16:02:24.898Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-02-19-extract-google-account-profile-picture/index.html</loc>
-    <lastmod>2023-03-17T14:50:19.840Z</lastmod>
+    <lastmod>2023-03-29T16:02:25.234Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-02-18-DESeq-example/2022-02-18-DESeq-example.html</loc>
-    <lastmod>2023-03-17T14:50:20.208Z</lastmod>
+    <lastmod>2023-03-29T16:02:25.950Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2023-02-28-Python-libraries-for-genomic-analysis/index.html</loc>
-    <lastmod>2023-03-17T14:50:20.624Z</lastmod>
+    <lastmod>2023-03-29T16:02:26.514Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-11-13-what-is-p-value/index.html</loc>
-    <lastmod>2023-03-17T14:50:20.924Z</lastmod>
+    <lastmod>2023-03-29T16:02:26.894Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-05-8-NAS-network-drive-mount-on-ubuntu/index.html</loc>
-    <lastmod>2023-03-17T14:50:21.288Z</lastmod>
+    <lastmod>2023-03-29T16:02:27.302Z</lastmod>
+  </url>
+  <url>
+    <loc>https://williamjeong2.github.io/posts/2023-03-29-which-reference-genome-should-i-use/index.html</loc>
+    <lastmod>2023-03-29T16:02:27.798Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-04-27-python-funtions/index.html</loc>
-    <lastmod>2023-03-17T14:50:21.620Z</lastmod>
+    <lastmod>2023-03-29T16:02:28.202Z</lastmod>
+  </url>
+  <url>
+    <loc>https://williamjeong2.github.io/posts/2023-03-29-what-is-RPKM-FPKM-TPM/index.html</loc>
+    <lastmod>2023-03-29T16:02:29.210Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2023-03-15-fastq-format/index.html</loc>
-    <lastmod>2023-03-17T14:50:21.984Z</lastmod>
+    <lastmod>2023-03-29T16:02:29.774Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2021-02-20-how-to-save-apple-time-machine-mackups-to-cloud-services/index.html</loc>
-    <lastmod>2023-03-17T14:50:22.352Z</lastmod>
+    <lastmod>2023-03-29T16:02:30.230Z</lastmod>
+  </url>
+  <url>
+    <loc>https://williamjeong2.github.io/posts/2023-03-29-Why-single-cell-RNA-seq/index.html</loc>
+    <lastmod>2023-03-29T16:02:30.810Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/posts/2022-02-25-pytorch-tensor/2022-02-25-pytorch-tensor.html</loc>
-    <lastmod>2023-03-17T14:50:22.712Z</lastmod>
+    <lastmod>2023-03-29T16:02:31.238Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/eng.study/2022-10-16-exciting/index.html</loc>
-    <lastmod>2023-03-17T14:50:23.004Z</lastmod>
+    <lastmod>2023-03-29T16:02:31.542Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/index.html</loc>
-    <lastmod>2023-03-17T14:50:23.516Z</lastmod>
+    <lastmod>2023-03-29T16:02:32.822Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/research.html</loc>
-    <lastmod>2023-03-17T14:50:23.808Z</lastmod>
+    <lastmod>2023-03-29T16:02:33.126Z</lastmod>
   </url>
   <url>
     <loc>https://williamjeong2.github.io/about.html</loc>
-    <lastmod>2023-03-17T14:50:24.080Z</lastmod>
+    <lastmod>2023-03-29T16:02:33.410Z</lastmod>
   </url>
 </urlset>

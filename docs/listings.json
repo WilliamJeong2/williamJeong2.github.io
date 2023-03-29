@@ -8,6 +8,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-03-29-which-reference-genome-should-i-use/index.html",
+      "/posts/2023-03-29-what-is-RPKM-FPKM-TPM/index.html",
+      "/posts/2023-03-29-Why-single-cell-RNA-seq/index.html",
       "/posts/2023-03-15-fastq-format/index.html",
       "/posts/2023-02-28-Python-libraries-for-genomic-analysis/index.html",
       "/posts/2022-11-13-what-is-p-value/index.html",

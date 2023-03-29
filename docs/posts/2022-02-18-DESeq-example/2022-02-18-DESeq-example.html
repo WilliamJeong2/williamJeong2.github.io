@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.294">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -112,15 +83,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
   }
 }</script>
 
@@ -156,39 +127,41 @@ ga('send', {
     <span class="navbar-title">윌리엄의 기술 블로그</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="검색"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="탐색 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">홈</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">블로그</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html">
+    <a class="nav-link" href="../../research.html" rel="" target="">
  <span class="menu-text">연구 아카이브</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../eng.html">
+    <a class="nav-link" href="../../eng.html" rel="" target="">
  <span class="menu-text">Eng.Study</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/williamjeong2"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/williamjeong2" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/wjd5480/"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/wjd5480/" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -219,14 +192,14 @@ ga('send', {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">저자</div>
     <div class="quarto-title-meta-contents">
              <p>William Jeong </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">공개</div>
     <div class="quarto-title-meta-contents">
       <p class="date">2022년 2월 18일</p>
     </div>
@@ -260,7 +233,7 @@ ga('send', {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    bioconductor-deseq2 codecov</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate diffexpr <span class="co"># activate diffexpr environment</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> setup.R <span class="co">#to install DESeq2 correctly </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py install</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>Note: 여기에서는 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3272078/">MAQC 데이터의 샘플 A와 B</a>에서 <a href="https://www.thermofisher.com/order/catalog/product/4456740">ERCC transcript</a>의 일부 예제를 사용하였다. 아래 실습에서 사용된 파일들은 <a href="https://github.com/wckdouglas/diffexpr/tree/master/test">여기</a>에서 확인하실 수 있다.</p>
 </blockquote>
@@ -269,81 +242,82 @@ ga('send', {
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-02-18T04:59:06.026419Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-02-18T04:59:06.025796Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-02-18T04:59:06.064180Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-02-18T04:59:06.063245Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-02-18T04:59:06.026350Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_table(<span class="st">'ercc.txt'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>id</th>
-      <th>A_1</th>
-      <th>A_2</th>
-      <th>A_3</th>
-      <th>B_1</th>
-      <th>B_2</th>
-      <th>B_3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ERCC-00002</td>
-      <td>111461</td>
-      <td>106261</td>
-      <td>107547</td>
-      <td>333944</td>
-      <td>199252</td>
-      <td>186947</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ERCC-00003</td>
-      <td>6735</td>
-      <td>5387</td>
-      <td>5265</td>
-      <td>13937</td>
-      <td>8584</td>
-      <td>8596</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ERCC-00004</td>
-      <td>17673</td>
-      <td>13983</td>
-      <td>15462</td>
-      <td>5065</td>
-      <td>3222</td>
-      <td>3353</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ERCC-00009</td>
-      <td>4669</td>
-      <td>4431</td>
-      <td>4211</td>
-      <td>6939</td>
-      <td>4155</td>
-      <td>3647</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ERCC-00012</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">A_1</th>
+<th data-quarto-table-cell-role="th">A_2</th>
+<th data-quarto-table-cell-role="th">A_3</th>
+<th data-quarto-table-cell-role="th">B_1</th>
+<th data-quarto-table-cell-role="th">B_2</th>
+<th data-quarto-table-cell-role="th">B_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ERCC-00002</td>
+<td>111461</td>
+<td>106261</td>
+<td>107547</td>
+<td>333944</td>
+<td>199252</td>
+<td>186947</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ERCC-00003</td>
+<td>6735</td>
+<td>5387</td>
+<td>5265</td>
+<td>13937</td>
+<td>8584</td>
+<td>8596</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ERCC-00004</td>
+<td>17673</td>
+<td>13983</td>
+<td>15462</td>
+<td>5065</td>
+<td>3222</td>
+<td>3353</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ERCC-00009</td>
+<td>4669</td>
+<td>4431</td>
+<td>4211</td>
+<td>6939</td>
+<td>4155</td>
+<td>3647</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ERCC-00012</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -355,65 +329,66 @@ ga('send', {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        .assign(sample <span class="op">=</span> <span class="kw">lambda</span> d: d.samplename.<span class="bu">str</span>.extract(<span class="st">'([AB])_'</span>, expand<span class="op">=</span><span class="va">False</span>)) <span class="op">\</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        .assign(replicate <span class="op">=</span> <span class="kw">lambda</span> d: d.samplename.<span class="bu">str</span>.extract(<span class="st">'_([123])'</span>, expand<span class="op">=</span><span class="va">False</span>)) </span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sample_df.index <span class="op">=</span> sample_df.samplename</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sample_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sample_df</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>samplename</th>
-      <th>sample</th>
-      <th>replicate</th>
-    </tr>
-    <tr>
-      <th>samplename</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A_1</th>
-      <td>A_1</td>
-      <td>A</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>A_2</th>
-      <td>A_2</td>
-      <td>A</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>A_3</th>
-      <td>A_3</td>
-      <td>A</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>B_1</th>
-      <td>B_1</td>
-      <td>B</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>B_2</th>
-      <td>B_2</td>
-      <td>B</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>B_3</th>
-      <td>B_3</td>
-      <td>B</td>
-      <td>3</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">samplename</th>
+<th data-quarto-table-cell-role="th">sample</th>
+<th data-quarto-table-cell-role="th">replicate</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">samplename</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">A_1</td>
+<td>A_1</td>
+<td>A</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">A_2</td>
+<td>A_2</td>
+<td>A</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">A_3</td>
+<td>A_3</td>
+<td>A</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">B_1</td>
+<td>B_1</td>
+<td>B</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">B_2</td>
+<td>B_2</td>
+<td>B</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">B_3</td>
+<td>B_3</td>
+<td>B</td>
+<td>3</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -429,7 +404,7 @@ ga('send', {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>dds.run_deseq() </span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>dds.get_deseq_result(contrast <span class="op">=</span> [<span class="st">'sample'</span>,<span class="st">'B'</span>,<span class="st">'A'</span>])</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> dds.deseq_result </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>res.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>res.head()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:rpy2.rinterface_lib.callbacks:R[write to console]: estimating size factors
 
@@ -446,219 +421,221 @@ WARNING:rpy2.rinterface_lib.callbacks:R[write to console]: fitting model and tes
 INFO:DESeq2:Using contrast: ['sample', 'B', 'A']</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>baseMean</th>
-      <th>log2FoldChange</th>
-      <th>lfcSE</th>
-      <th>stat</th>
-      <th>pvalue</th>
-      <th>padj</th>
-      <th>id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>ERCC-00002</th>
-      <td>167917.342729</td>
-      <td>0.808857</td>
-      <td>0.047606</td>
-      <td>16.990537</td>
-      <td>9.650176e-65</td>
-      <td>1.102877e-63</td>
-      <td>ERCC-00002</td>
-    </tr>
-    <tr>
-      <th>ERCC-00003</th>
-      <td>7902.634073</td>
-      <td>0.521731</td>
-      <td>0.058878</td>
-      <td>8.861252</td>
-      <td>7.912104e-19</td>
-      <td>4.868987e-18</td>
-      <td>ERCC-00003</td>
-    </tr>
-    <tr>
-      <th>ERCC-00004</th>
-      <td>10567.048228</td>
-      <td>-2.330122</td>
-      <td>0.055754</td>
-      <td>-41.792764</td>
-      <td>0.000000e+00</td>
-      <td>0.000000e+00</td>
-      <td>ERCC-00004</td>
-    </tr>
-    <tr>
-      <th>ERCC-00009</th>
-      <td>4672.573043</td>
-      <td>-0.195660</td>
-      <td>0.061600</td>
-      <td>-3.176286</td>
-      <td>1.491736e-03</td>
-      <td>3.616329e-03</td>
-      <td>ERCC-00009</td>
-    </tr>
-    <tr>
-      <th>ERCC-00012</th>
-      <td>0.384257</td>
-      <td>-1.565491</td>
-      <td>4.047562</td>
-      <td>-0.386774</td>
-      <td>6.989237e-01</td>
-      <td>NaN</td>
-      <td>ERCC-00012</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">baseMean</th>
+<th data-quarto-table-cell-role="th">log2FoldChange</th>
+<th data-quarto-table-cell-role="th">lfcSE</th>
+<th data-quarto-table-cell-role="th">stat</th>
+<th data-quarto-table-cell-role="th">pvalue</th>
+<th data-quarto-table-cell-role="th">padj</th>
+<th data-quarto-table-cell-role="th">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00002</td>
+<td>167917.342729</td>
+<td>0.808857</td>
+<td>0.047606</td>
+<td>16.990537</td>
+<td>9.650176e-65</td>
+<td>1.102877e-63</td>
+<td>ERCC-00002</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ERCC-00003</td>
+<td>7902.634073</td>
+<td>0.521731</td>
+<td>0.058878</td>
+<td>8.861252</td>
+<td>7.912104e-19</td>
+<td>4.868987e-18</td>
+<td>ERCC-00003</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00004</td>
+<td>10567.048228</td>
+<td>-2.330122</td>
+<td>0.055754</td>
+<td>-41.792764</td>
+<td>0.000000e+00</td>
+<td>0.000000e+00</td>
+<td>ERCC-00004</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ERCC-00009</td>
+<td>4672.573043</td>
+<td>-0.195660</td>
+<td>0.061600</td>
+<td>-3.176286</td>
+<td>1.491736e-03</td>
+<td>3.616329e-03</td>
+<td>ERCC-00009</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00012</td>
+<td>0.384257</td>
+<td>-1.565491</td>
+<td>4.047562</td>
+<td>-0.386774</td>
+<td>6.989237e-01</td>
+<td>NaN</td>
+<td>ERCC-00012</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-02-18T05:01:40.560082Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-02-18T05:01:40.559482Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-02-18T05:01:40.696847Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-02-18T05:01:40.696149Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-02-18T05:01:40.560015Z&quot;}" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dds.normalized_count() <span class="co">#DESeq2 normalized count</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dds.normalized_count() <span class="co">#DESeq2 normalized count</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:DESeq2:Normalizing counts</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>A_1</th>
-      <th>A_2</th>
-      <th>A_3</th>
-      <th>B_1</th>
-      <th>B_2</th>
-      <th>B_3</th>
-      <th>id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>ERCC-00002</th>
-      <td>115018.353297</td>
-      <td>122494.471246</td>
-      <td>128809.545168</td>
-      <td>218857.357008</td>
-      <td>207880.854689</td>
-      <td>214443.474968</td>
-      <td>ERCC-00002</td>
-    </tr>
-    <tr>
-      <th>ERCC-00003</th>
-      <td>6949.952086</td>
-      <td>6209.970889</td>
-      <td>6305.915138</td>
-      <td>9133.911628</td>
-      <td>8955.740754</td>
-      <td>9860.313944</td>
-      <td>ERCC-00003</td>
-    </tr>
-    <tr>
-      <th>ERCC-00004</th>
-      <td>18237.045763</td>
-      <td>16119.180051</td>
-      <td>18518.909755</td>
-      <td>3319.456296</td>
-      <td>3361.532701</td>
-      <td>3846.164804</td>
-      <td>ERCC-00004</td>
-    </tr>
-    <tr>
-      <th>ERCC-00009</th>
-      <td>4818.014297</td>
-      <td>5107.922964</td>
-      <td>5043.534405</td>
-      <td>4547.622357</td>
-      <td>4334.937422</td>
-      <td>4183.406812</td>
-      <td>ERCC-00009</td>
-    </tr>
-    <tr>
-      <th>ERCC-00012</th>
-      <td>0.000000</td>
-      <td>2.305540</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>ERCC-00012</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>ERCC-00164</th>
-      <td>2.063831</td>
-      <td>1.152770</td>
-      <td>5.988523</td>
-      <td>3.276857</td>
-      <td>1.043306</td>
-      <td>2.294163</td>
-      <td>ERCC-00164</td>
-    </tr>
-    <tr>
-      <th>ERCC-00165</th>
-      <td>269.329992</td>
-      <td>246.692736</td>
-      <td>287.449123</td>
-      <td>513.811202</td>
-      <td>484.094095</td>
-      <td>489.803869</td>
-      <td>ERCC-00165</td>
-    </tr>
-    <tr>
-      <th>ERCC-00168</th>
-      <td>1.031916</td>
-      <td>3.458309</td>
-      <td>0.000000</td>
-      <td>4.587600</td>
-      <td>4.173225</td>
-      <td>1.147082</td>
-      <td>ERCC-00168</td>
-    </tr>
-    <tr>
-      <th>ERCC-00170</th>
-      <td>137.244785</td>
-      <td>148.707304</td>
-      <td>135.340629</td>
-      <td>26.870229</td>
-      <td>10.433062</td>
-      <td>32.118286</td>
-      <td>ERCC-00170</td>
-    </tr>
-    <tr>
-      <th>ERCC-00171</th>
-      <td>8707.304484</td>
-      <td>9622.169484</td>
-      <td>8818.699555</td>
-      <td>7691.439109</td>
-      <td>7691.253592</td>
-      <td>6892.813691</td>
-      <td>ERCC-00171</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">A_1</th>
+<th data-quarto-table-cell-role="th">A_2</th>
+<th data-quarto-table-cell-role="th">A_3</th>
+<th data-quarto-table-cell-role="th">B_1</th>
+<th data-quarto-table-cell-role="th">B_2</th>
+<th data-quarto-table-cell-role="th">B_3</th>
+<th data-quarto-table-cell-role="th">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00002</td>
+<td>115018.353297</td>
+<td>122494.471246</td>
+<td>128809.545168</td>
+<td>218857.357008</td>
+<td>207880.854689</td>
+<td>214443.474968</td>
+<td>ERCC-00002</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ERCC-00003</td>
+<td>6949.952086</td>
+<td>6209.970889</td>
+<td>6305.915138</td>
+<td>9133.911628</td>
+<td>8955.740754</td>
+<td>9860.313944</td>
+<td>ERCC-00003</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00004</td>
+<td>18237.045763</td>
+<td>16119.180051</td>
+<td>18518.909755</td>
+<td>3319.456296</td>
+<td>3361.532701</td>
+<td>3846.164804</td>
+<td>ERCC-00004</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ERCC-00009</td>
+<td>4818.014297</td>
+<td>5107.922964</td>
+<td>5043.534405</td>
+<td>4547.622357</td>
+<td>4334.937422</td>
+<td>4183.406812</td>
+<td>ERCC-00009</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00012</td>
+<td>0.000000</td>
+<td>2.305540</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>ERCC-00012</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00164</td>
+<td>2.063831</td>
+<td>1.152770</td>
+<td>5.988523</td>
+<td>3.276857</td>
+<td>1.043306</td>
+<td>2.294163</td>
+<td>ERCC-00164</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ERCC-00165</td>
+<td>269.329992</td>
+<td>246.692736</td>
+<td>287.449123</td>
+<td>513.811202</td>
+<td>484.094095</td>
+<td>489.803869</td>
+<td>ERCC-00165</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00168</td>
+<td>1.031916</td>
+<td>3.458309</td>
+<td>0.000000</td>
+<td>4.587600</td>
+<td>4.173225</td>
+<td>1.147082</td>
+<td>ERCC-00168</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ERCC-00170</td>
+<td>137.244785</td>
+<td>148.707304</td>
+<td>135.340629</td>
+<td>26.870229</td>
+<td>10.433062</td>
+<td>32.118286</td>
+<td>ERCC-00170</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ERCC-00171</td>
+<td>8707.304484</td>
+<td>9622.169484</td>
+<td>8818.699555</td>
+<td>7691.439109</td>
+<td>7691.253592</td>
+<td>6892.813691</td>
+<td>ERCC-00171</td>
+</tr>
+</tbody>
 </table>
+
 <p>92 rows × 7 columns</p>
 </div>
 </div>
 </div>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-01-07T05:16:27.958910Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-01-07T05:16:27.958443Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-01-07T05:16:27.983055Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-01-07T05:16:27.981696Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-01-07T05:16:27.958858Z&quot;}" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dds.comparison <span class="co"># show coefficients for GLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dds.comparison <span class="co"># show coefficients for GLM</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>['Intercept', 'replicate_2_vs_1', 'replicate_3_vs_1', 'sample_B_vs_A']</code></pre>
 </div>
@@ -668,7 +645,7 @@ INFO:DESeq2:Using contrast: ['sample', 'B', 'A']</code></pre>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># so that we can now use "coef" for lfcShrink</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the comparison we want to focus on is 'sample_B_vs_A', so coef = 4 will be used</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>lfc_res <span class="op">=</span> dds.lfcShrink(coef<span class="op">=</span><span class="dv">4</span>, method<span class="op">=</span><span class="st">'apeglm'</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>lfc_res.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>lfc_res.head()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:rpy2.rinterface_lib.callbacks:R[write to console]: using 'apeglm' for LFC shrinkage. If used in published research, please cite:
     Zhu, A., Ibrahim, J.G., Love, M.I. (2018) Heavy-tailed prior distributions for
@@ -677,69 +654,70 @@ INFO:DESeq2:Using contrast: ['sample', 'B', 'A']</code></pre>
 </code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>id</th>
-      <th>baseMean</th>
-      <th>log2FoldChange</th>
-      <th>lfcSE</th>
-      <th>pvalue</th>
-      <th>padj</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ERCC-00002</td>
-      <td>167917.342729</td>
-      <td>0.807316</td>
-      <td>0.047609</td>
-      <td>9.650176e-65</td>
-      <td>1.102877e-63</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ERCC-00003</td>
-      <td>7902.634073</td>
-      <td>0.519944</td>
-      <td>0.058823</td>
-      <td>7.912104e-19</td>
-      <td>4.868987e-18</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ERCC-00004</td>
-      <td>10567.048228</td>
-      <td>-2.328037</td>
-      <td>0.055783</td>
-      <td>0.000000e+00</td>
-      <td>0.000000e+00</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ERCC-00009</td>
-      <td>4672.573043</td>
-      <td>-0.194594</td>
-      <td>0.061466</td>
-      <td>1.491736e-03</td>
-      <td>3.616329e-03</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ERCC-00012</td>
-      <td>0.384257</td>
-      <td>-0.052326</td>
-      <td>0.820696</td>
-      <td>6.989237e-01</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">baseMean</th>
+<th data-quarto-table-cell-role="th">log2FoldChange</th>
+<th data-quarto-table-cell-role="th">lfcSE</th>
+<th data-quarto-table-cell-role="th">pvalue</th>
+<th data-quarto-table-cell-role="th">padj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ERCC-00002</td>
+<td>167917.342729</td>
+<td>0.807316</td>
+<td>0.047609</td>
+<td>9.650176e-65</td>
+<td>1.102877e-63</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ERCC-00003</td>
+<td>7902.634073</td>
+<td>0.519944</td>
+<td>0.058823</td>
+<td>7.912104e-19</td>
+<td>4.868987e-18</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ERCC-00004</td>
+<td>10567.048228</td>
+<td>-2.328037</td>
+<td>0.055783</td>
+<td>0.000000e+00</td>
+<td>0.000000e+00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ERCC-00009</td>
+<td>4672.573043</td>
+<td>-0.194594</td>
+<td>0.061466</td>
+<td>1.491736e-03</td>
+<td>3.616329e-03</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ERCC-00012</td>
+<td>0.384257</td>
+<td>-0.052326</td>
+<td>0.820696</td>
+<td>6.989237e-01</td>
+<td>NaN</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -747,7 +725,7 @@ INFO:DESeq2:Using contrast: ['sample', 'B', 'A']</code></pre>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.ko">https://creativecommons.org/licenses/by/4.0/deed.ko</a></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">라이센스</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.ko">https://creativecommons.org/licenses/by/4.0/deed.ko</a></div></div></section></div></main> <!-- /main -->
 <div>
 <button type="button" class="btn btn-primary btn-lg" onclick="window.open(&quot;https://toss.me/williamj&quot;)">💵Toss로 서포트하기</button>
 <p class="text-muted">송금하실 때 메세지에 어떤 글을 보았는지 남겨주시면 게시글에 남겨드립니다. <br>기부해주신 돈은 커피를 마시는데 사용됩니다.</p>
@@ -779,9 +757,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -792,12 +784,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "복사완료!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "복사완료!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -846,6 +838,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
