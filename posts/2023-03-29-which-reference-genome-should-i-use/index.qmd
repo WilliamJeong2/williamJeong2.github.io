@@ -4,7 +4,7 @@ description: ""
 date: "2023-03-29"
 draft: false
 freeze: true
-image: "images/thumbnail.png"
+image: "img/thumbnail.png"
 reference-location: margin
 citation-location: margin
 categories:

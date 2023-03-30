@@ -4,7 +4,7 @@ description: "각각 어떤 의미를 가지고 있는지 알아보자"
 date: "2023-03-29"
 draft: false
 freeze: true
-image: "images/thumbnail.png"
+image: "img/thumbnail.png"
 reference-location: margin
 citation-location: margin
 categories:

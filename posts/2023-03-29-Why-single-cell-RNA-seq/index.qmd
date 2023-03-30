@@ -7,7 +7,7 @@ freeze: true
 reference-location: margin
 citation-location: margin
 callout-appearance: simple
-image: "images/thumbnail.png"
+image: "img/thumbnail.png"
 categories:
   - bioinformatics
 ---
