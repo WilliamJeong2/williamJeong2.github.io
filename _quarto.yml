@@ -9,7 +9,6 @@ website:
   title: "윌리엄의 기술 블로그"
   description: "윌리엄의 기술 블로그입니다."
   site-url: https://williamjeong2.github.io
-  # favicon: 
   navbar:
     right:
       - href: about.qmd
