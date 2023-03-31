@@ -8,7 +8,7 @@ image: "img/thumbnail.png"
 reference-location: margin
 citation-location: margin
 categories:
-  - bioinformatics
+  - Bioinformatics
 ---
 
 생물 정보학에서 굉장히 흔하게 접할 수 있는 용어 중 하나로 **RPKM, FPKM, TPM**이 있습니다.  

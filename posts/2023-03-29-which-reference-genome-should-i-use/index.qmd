@@ -8,7 +8,7 @@ image: "img/thumbnail.png"
 reference-location: margin
 citation-location: margin
 categories:
-  - bioinformatics
+  - Bioinformatics
 ---
 
 

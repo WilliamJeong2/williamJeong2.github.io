@@ -9,7 +9,7 @@ citation-location: margin
 callout-appearance: simple
 image: "img/thumbnail.png"
 categories:
-  - bioinformatics
+  - Bioinformatics
 ---
 
 
